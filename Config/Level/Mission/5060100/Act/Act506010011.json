@@ -9,15 +9,30 @@
           "CreateCharacterList": [],
           "CaptureNPCList": [],
           "EntityVisiableList": [],
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
+          "HideMunicipalOther": true,
+          "HideMonster": true,
           "PropVisiableList": [],
+          "UseNewStreamingSourceType": true,
           "StreamingSourcesInBlackMask": [],
           "StreamingSourcesAfterBlackMask": [],
-          "MarkStreamingItems": []
+          "MarkStreamingItems": [],
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdvNpcFaceToPlayer"
+          "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "FromDialog": true,
+          "TryFaceToFace": true,
+          "NpcLookAtPlayer": true,
+          "PlayerLookAtNpc": true,
+          "StopLookAtOnGraphEnd": true,
+          "TurnBackOnGraphEnd": true,
+          "WaitFinishMode": "WaitFaceAngle",
+          "ForceToStandBy": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
@@ -30,9 +45,8 @@
             },
             "SingleNpcID": {
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             },
@@ -40,42 +54,50 @@
               "Value": "InteractTarget_OrigamiBird01"
             },
             "NpcIDInOwnerGroup": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 400001
+              "fixedValue": {
+                "Value": 400001.0000931325
               }
             }
           },
+          "ForceStart": true,
           "StoryAvatarID": "NPC_Special_OrigamiBird_00",
-          "StoryMotionID": 900090200
+          "NormalizedTransitionDuration": 0.05,
+          "StoryMotionID": 900090200,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 506011301,
-              "ProtectTime": 0
+              "TalkSentenceID": 506011301
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 506011302,
-              "ProtectTime": 0
+              "TalkSentenceID": 506011302
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

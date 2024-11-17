@@ -4,10 +4,14 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -17,7 +21,8 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence_103040386"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.AdvEntityFaceTo",
@@ -25,24 +30,39 @@
             "$type": "RPG.GameCore.TargetFetchAdvNpcEx"
           },
           "TargetType": {
-            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer"
-          }
+            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer",
+            "IncludeStoryPlayer": true
+          },
+          "EnableLookAt": true,
+          "LookAtPoint": "Head",
+          "FinishImmediately": true,
+          "WaitFinishMode": "WaitAnimFinish",
+          "TurnBackOnGraphEnd": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 103040386,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 103040387,
               "ProtectTime": 0.3
             },
             {
-              "TalkSentenceID": 103040391
+              "TextSpeed": 20,
+              "TalkSentenceID": 103040391,
+              "ProtectTime": 0.8
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -54,37 +74,51 @@
           "CreateCharacterList": [],
           "CaptureNPCList": [],
           "EntityVisiableList": [],
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
-          "HideMunicipalOther": false,
+          "HideMonster": true,
           "HideProp": true,
           "PropVisiableList": [],
-          "UseNewStreamingSourceType": false,
           "StreamingSourcesInBlackMask": [],
           "StreamingSourcesAfterBlackMask": [],
-          "MarkStreamingItems": []
+          "MarkStreamingItems": [],
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
-          "TryFaceToFace": false,
+          "FromDialog": true,
           "OnlyPlayerFaceToNpc": true,
-          "ForceToStandBy": false
+          "NpcLookAtPlayer": true,
+          "PlayerLookAtNpc": true,
+          "StopLookAtOnGraphEnd": true,
+          "TurnBackOnGraphEnd": true,
+          "WaitFinishMode": "WaitFaceAngle",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 103040381,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 103040391,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

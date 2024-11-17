@@ -7,17 +7,17 @@
         {
           "$type": "RPG.GameCore.CreateNPC",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 61
+            "fixedValue": {
+              "Value": 61.00000001420267
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -27,11 +27,14 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "300060201_Finish"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PerformanceTransition",
+          "SwitchInTime": 0.5,
           "SwitchKeepTime": 2,
+          "SwitchOutTime": 0.5,
           "TextEnabled": true,
           "TalkSentenceID": 300060200,
           "CreateNpcList": [],
@@ -40,19 +43,32 @@
             {
               "GroupID": 61,
               "GroupNpcID": 400001,
-              "DestroyList": []
+              "DestroyList": [],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ],
+          "DisactiveVCamOnGraphEnd": true,
           "ActiveVirtualCamera": {
-            "TaskEnabled": false
+            "IsActive": true,
+            "VCameraDitherMaxDistance": 1,
+            "CenterPosX": -1,
+            "CenterPosY": -1,
+            "IsClientOnly": true
           },
           "SwitchCharacterAnchor": {
-            "TaskEnabled": false
-          }
+            "ResetAnimation": true,
+            "ResetCamera": true,
+            "IsClientOnly": true
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_300060201"
+          "Key": "Mission_300060201",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

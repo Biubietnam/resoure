@@ -1,6 +1,13 @@
 {
   "GroupConfigName": "FollowField",
   "ConfigEntityPath": "Config/ConfigEntity/SummonUnit/SummonUnit_Common_TeamField_Entity.json",
+  "TickLodTemplateName": "DefaultStaticEntity",
+  "ShoesType": "boot",
+  "Duration": {
+    "fixedValue": {
+      "Value": -1.0000000002328306
+    }
+  },
   "OnCreate": [
     {
       "$type": "RPG.GameCore.AdvPlayerEnableIdleShow",
@@ -8,7 +15,9 @@
         "$type": "RPG.GameCore.TargetAlias",
         "Alias": "CasterSummoner"
       },
-      "IdleShowIndex": 1
+      "IdleShowIndex": 1,
+      "TaskEnabled": true,
+      "IsClientOnly": true
     },
     {
       "$type": "RPG.GameCore.AdvPlayerEnableIdleShow",
@@ -16,7 +25,9 @@
         "$type": "RPG.GameCore.TargetAlias",
         "Alias": "CasterSummoner"
       },
-      "IdleShowIndex": 2
+      "IdleShowIndex": 2,
+      "TaskEnabled": true,
+      "IsClientOnly": true
     }
   ],
   "OnDestroy": [
@@ -27,7 +38,9 @@
         "Alias": "CasterSummoner"
       },
       "Enable": true,
-      "IdleShowIndex": 1
+      "IdleShowIndex": 1,
+      "TaskEnabled": true,
+      "IsClientOnly": true
     },
     {
       "$type": "RPG.GameCore.AdvPlayerEnableIdleShow",
@@ -36,20 +49,23 @@
         "Alias": "CasterSummoner"
       },
       "Enable": true,
-      "IdleShowIndex": 2
+      "IdleShowIndex": 2,
+      "TaskEnabled": true,
+      "IsClientOnly": true
     }
   ],
   "TriggerConfig": {
     "CustomTriggers": [
       {
         "TriggerName": "HitNpcMonsterTrigger",
+        "DefaultEnable": true,
         "Radius": {
-          "IsDynamic": false,
-          "FixedValue": {
-            "Value": 8
+          "fixedValue": {
+            "Value": 8.000000001862645
           }
         },
         "NeedNavmeshCheck": true,
+        "RayStartOffsetY": 1,
         "TargetTypes": [
           "NPCMonster"
         ],
@@ -62,7 +78,9 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "CasterSummoner"
               },
-              "ModifierName": "ADV_StageAbility_Maze_Feixiao"
+              "ModifierName": "ADV_StageAbility_Maze_Feixiao",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             "SuccessTaskList": [
               {
@@ -73,11 +91,12 @@
                 },
                 "ID": 122003,
                 "LifeTime": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 90061
+                  "fixedValue": {
+                    "Value": 90061.00002096896
                   }
-                }
+                },
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.PredicateTaskList",
@@ -86,7 +105,9 @@
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "TaskActionTarget"
-                  }
+                  },
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 "SuccessTaskList": [
                   {
@@ -97,11 +118,12 @@
                     },
                     "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemyElite_Visual",
                     "Count": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
+                      "fixedValue": {
+                        "Value": 1.0000000002328306
                       }
-                    }
+                    },
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 ],
                 "FailedTaskList": [
@@ -113,15 +135,18 @@
                     },
                     "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemy_Visual",
                     "Count": {
-                      "IsDynamic": false,
-                      "FixedValue": {
-                        "Value": 1
+                      "fixedValue": {
+                        "Value": 1.0000000002328306
                       }
-                    }
+                    },
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
-                ]
+                ],
+                "TaskEnabled": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           }
         ],
         "OnTriggerExit": [
@@ -133,11 +158,12 @@
             },
             "ID": 122003,
             "LifeTime": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0.5
+              "fixedValue": {
+                "Value": 0.5000000005820766
               }
-            }
+            },
+            "TaskEnabled": true,
+            "IsClientOnly": true
           },
           {
             "$type": "RPG.GameCore.PredicateTaskList",
@@ -148,7 +174,8 @@
                 "Alias": "AdvLocalPlayer"
               },
               "ModifierName": "ADV_StageAbility_Maze_Feixiao_Visual",
-              "Inverse": true
+              "Inverse": true,
+              "TaskEnabled": true
             },
             "SuccessTaskList": [
               {
@@ -158,7 +185,9 @@
                   "TargetType": {
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "TaskActionTarget"
-                  }
+                  },
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 "SuccessTaskList": [
                   {
@@ -167,7 +196,9 @@
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "TaskActionTarget"
                     },
-                    "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemyElite_Visual"
+                    "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemyElite_Visual",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 ],
                 "FailedTaskList": [
@@ -177,11 +208,15 @@
                       "$type": "RPG.GameCore.TargetAlias",
                       "Alias": "TaskActionTarget"
                     },
-                    "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemy_Visual"
+                    "ModifierName": "ADV_StageAbility_Maze_Feixiao_GatheredEnemy_Visual",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
-                ]
+                ],
+                "TaskEnabled": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           },
           {
             "$type": "RPG.GameCore.PredicateTaskList",
@@ -201,12 +236,12 @@
                 ]
               },
               "Number": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 5
+                "fixedValue": {
+                  "Value": 5.000000001164153
                 }
               },
-              "CompareType": "GreaterEqual"
+              "CompareType": "GreaterEqual",
+              "TaskEnabled": true
             },
             "FailedTaskList": [
               {
@@ -215,22 +250,27 @@
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "Caster"
                 },
-                "ModifierName": "ADV_StageAbility_Maze_Feixiao_Achievement"
+                "ModifierName": "ADV_StageAbility_Maze_Feixiao_Achievement",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           }
-        ]
+        ],
+        "SkipFakeAvatar": true
       },
       {
         "TriggerName": "HitPropTrigger",
+        "DefaultEnable": true,
         "Radius": {
-          "IsDynamic": false,
-          "FixedValue": {
-            "Value": 8
+          "fixedValue": {
+            "Value": 8.000000001862645
           }
         },
         "UseVerticalBound": true,
         "NeedRaycast": true,
+        "RayStartOffsetY": 1,
         "TargetTypes": [
           "Prop"
         ],
@@ -242,7 +282,9 @@
           },
           "Types": [
             "PROP_DESTRUCT"
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         "OnTriggerEnter": [
           {
@@ -251,7 +293,9 @@
               "$type": "RPG.GameCore.TargetAlias",
               "Alias": "TaskActionTarget"
             },
-            "ClientMode": "PreShow"
+            "ClientMode": "PreShow",
+            "TaskEnabled": true,
+            "IsClientOnly": true
           },
           {
             "$type": "RPG.GameCore.TriggerEffect",
@@ -260,7 +304,33 @@
               "Alias": "TaskActionTarget"
             },
             "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Feixiao_00/Eff_Avatar_Feixiao_00_MazeSkill01_Tornado_01_Hit.prefab",
-            "AttachPoint": "SelectRoot"
+            "AttachPoint": "SelectRoot",
+            "Scale": {
+              "x": -1,
+              "y": -1,
+              "z": -1,
+              "normalized": {
+                "x": -0.577350259,
+                "y": -0.577350259,
+                "z": -0.577350259,
+                "normalized": {
+                  "x": -0.5773503,
+                  "y": -0.5773503,
+                  "z": -0.5773503,
+                  "magnitude": 1.00000012,
+                  "sqrMagnitude": 1.00000024
+                },
+                "magnitude": 0.99999994,
+                "sqrMagnitude": 0.99999994
+              },
+              "magnitude": 1.73205078,
+              "sqrMagnitude": 3
+            },
+            "ParamEntityUsage": "LookAt",
+            "TowardMaxPitchAngle": 90,
+            "MaxMutexCount": 1,
+            "TaskEnabled": true,
+            "IsClientOnly": true
           }
         ],
         "OnTriggerExit": [],
@@ -270,15 +340,18 @@
             "TargetType": {
               "$type": "RPG.GameCore.TargetAlias",
               "Alias": "TaskActionTarget"
-            }
+            },
+            "TaskEnabled": true,
+            "IsClientOnly": true
           }
-        ]
+        ],
+        "SkipFakeAvatar": true
       }
     ]
   },
   "GatherConfig": {
-    "RegionOffset": 0,
     "RegionRadius": 3,
+    "ConstraintRadius": 8,
     "DampSmoothTime": 0.01,
     "CentripetalSpeedCurve": "Camera/BlendCurve/BlendCut_1220_MazeCentripetalSpeed.asset",
     "CentripetalFactorX": 10,
@@ -291,11 +364,7 @@
     "MinRadius": 1.5,
     "MaxRadius": 3.5,
     "RingCount": 3,
-    "IsClockwise": true
-  },
-  "DynamicValues": {
-    "Values": {
-      "-1432975418": {}
-    }
+    "IsClockwise": true,
+    "UpdateDirection": true
   }
 }

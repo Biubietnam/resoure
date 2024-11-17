@@ -1,7 +1,7 @@
 {
-  "$type": "RPG.GameCore.RtLevelGroupInfo",
   "GroupName": "ChallengeMaze",
   "AreaAnchorName": "LevelArea_P10000_F10000000_G34",
+  "SaveType": "Permanent",
   "LoadCondition": {
     "Conditions": [
       {
@@ -14,21 +14,14 @@
   "LoadSide": "Server",
   "ValueSource": {},
   "ConflictIDList": [],
-  "TagContainer": {
-    "List": [
-      {
-        "Tag": "Group.Level.SpecialEntrance",
-        "TagHash": -1446353026
-      }
-    ]
-  },
+  "StreamingTemplateType": "Standard",
   "AnchorList": [
     {
       "Name": "Anchor1",
       "RotY": 270,
       "ID": 1,
       "PosX": -4.03,
-      "PosY": 2E-06,
+      "PosY": 0.000002,
       "PosZ": -13.006
     }
   ],
@@ -42,6 +35,7 @@
     {
       "NPCID": 3012,
       "LevelGraph": "Config/Level/NPC/NPC_Train_Messenger.json",
+      "LoadOnInitial": true,
       "ValueSource": {},
       "Trigger": {
         "Radius": 2,
@@ -51,6 +45,7 @@
         "PointList": [],
         "Server": true
       },
+      "DialogueTriggerAngle": 120,
       "DialogueGroups": [
         401010507,
         401010531,
@@ -60,15 +55,18 @@
         29,
         16
       ],
-      "DefaultLookAtMode": "Closed",
       "BoardShowList": [
         8
       ],
       "OverrideNPCName": {
         "Hash": 1209718592
       },
+      "OverrideNPCTitle": {
+        "Hash": 371857150
+      },
       "TalkChosenType": "loop",
       "TalkDialogGroupIDList": [],
+      "DefaultAnimationType": "FreeStyle",
       "DefaultIdleFreeStyleMotionID": 100020000,
       "IsMapContent": true,
       "BornType": "Permanent",
@@ -99,18 +97,31 @@
             }
           ],
           "Operation": "Or"
-        }
+        },
+        "EnableDialogCamera": true
       },
+      "InteractIconType": "ChatIcon",
+      "DialogueTriggerSkipFakeAvatar": true,
       "CameraCenterEntityList": [],
       "SpawnConfig": {
-        "EntitySpawnConfig": {}
+        "TryCapture": true,
+        "CaptureDistanceTolerance": 1.5,
+        "EntitySpawnConfig": {
+          "NeedBlackIn": true,
+          "BlackInDistance": 25,
+          "NeedFadeIn": true,
+          "NeedFadeOut": true
+        }
       },
-      "TriggerValidGuest": {},
+      "TriggerValidGuest": {
+        "LocalPlayer": true,
+        "Teammember": true
+      },
       "Name": "NPC1",
       "RotY": 40.61753,
       "ID": 400001,
       "PosX": -5.717,
-      "PosY": 2E-06,
+      "PosY": 0.000002,
       "PosZ": -13.802
     }
   ],

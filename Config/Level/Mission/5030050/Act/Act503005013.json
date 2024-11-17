@@ -6,9 +6,12 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "E",
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
-          "UseNewStreamingSourceType": false
+          "HideMunicipalOther": true,
+          "HideMonster": true,
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.StartDialogueEntityInteract",
@@ -17,15 +20,13 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 148
+                "fixedValue": {
+                  "Value": 148.00000003445894
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
@@ -53,71 +54,106 @@
                 "$type": "RPG.GameCore.SharedFloat",
                 "Key": "ResetEntityTransform"
               }
+            ],
+            "SharedValues": [
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Level/Common_Adventure/Dreamland.prefab",
+                "Key": "DialogueEntityInteract_AreaPath"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Dreamland,Dreamland_Camera",
+                "Key": "DialogueEntityInteract_CameraKey"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Dreamland",
+                "Key": "DialogueEntityInteract_AreaName"
+              },
+              {
+                "$type": "RPG.GameCore.SharedFloat",
+                "Key": "ResetEntityTransform"
+              }
             ]
           },
           "OverrideTasks": {
             "OverrideVCamBlendConfig": true,
             "VCamBlendConfig": {
               "ExportToJson": true,
-              "BlendType": "Cut"
+              "BlendType": "Cut",
+              "FOVSmoothDampTime": -1,
+              "FrameBlendWeightStart": 1,
+              "FrameBlendDuration": 1
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005143,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005144,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005145,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005146,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005147,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005148,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005149,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
           "OptionList": [
             {
-              "$type": "RPG.GameCore.OptionTalkInfo",
               "TalkSentenceID": 503005150,
               "OptionIconType": "ChatContinueIcon",
               "TriggerCustomString": "TalkSentence_503005151"
             },
             {
-              "$type": "RPG.GameCore.OptionTalkInfo",
               "TalkSentenceID": 503005153,
               "OptionIconType": "ChatContinueIcon",
               "TriggerCustomString": "TalkSentence_503005154"
             },
             {
-              "$type": "RPG.GameCore.OptionTalkInfo",
               "TalkSentenceID": 503005157,
               "OptionIconType": "ChatContinueIcon",
               "TriggerCustomString": "TalkSentence_503005158"
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -127,7 +163,8 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence_503005151"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.ConsumeMissionItemPerformance",
@@ -138,28 +175,35 @@
           "OnSubmitConfirm": [
             {
               "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+              "KeepDisplay": true,
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503005151,
                   "ProtectTime": 0.3
                 },
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503005152,
                   "ProtectTime": 0.3
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "Talk_404031901"
-              }
+              },
+              "TaskEnabled": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "ALL_TALK_END"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
           "OnSubmitCancel": [
@@ -167,10 +211,16 @@
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "ALL_TALK_END"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
-          "SimpleTalk": {}
+          "SimpleTalk": {
+            "TextSpeed": 20,
+            "ProtectTime": 0.8
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -180,7 +230,8 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence_503005154"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.ConsumeMissionItemPerformance",
@@ -191,32 +242,40 @@
           "OnSubmitConfirm": [
             {
               "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+              "KeepDisplay": true,
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503005154,
                   "ProtectTime": 0.3
                 },
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503005155,
                   "ProtectTime": 0.3
                 },
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503005156,
                   "ProtectTime": 0.3
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "Talk_404031902"
-              }
+              },
+              "TaskEnabled": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "ALL_TALK_END"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
           "OnSubmitCancel": [
@@ -224,10 +283,16 @@
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "ALL_TALK_END"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
-          "SimpleTalk": {}
+          "SimpleTalk": {
+            "TextSpeed": 20,
+            "ProtectTime": 0.8
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -237,26 +302,33 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence_503005158"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005158,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 503005159,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
           "CustomString": {
             "Value": "ALL_TALK_END"
-          }
+          },
+          "TaskEnabled": true
         }
       ]
     },
@@ -266,23 +338,32 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "ALL_TALK_END"
-          }
+          },
+          "TaskEnabled": true
         },
         {
-          "$type": "RPG.GameCore.EndDialogueEntityInteract"
+          "$type": "RPG.GameCore.EndDialogueEntityInteract",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

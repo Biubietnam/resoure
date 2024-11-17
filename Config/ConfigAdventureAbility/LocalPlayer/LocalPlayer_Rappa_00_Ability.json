@@ -3,7 +3,8 @@
     {
       "Name": "LocalPlayer_Rappa_00_NormalAtk01",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
@@ -12,18 +13,27 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "ADV_StageAbility_Maze_IgnoreWeakness_MazeSkillMark"
+          "ModifierName": "ADV_StageAbility_Maze_IgnoreWeakness_MazeSkillMark",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByHaveAbilityTarget"
+            "$type": "RPG.GameCore.ByHaveAbilityTarget",
+            "TaskEnabled": true
           },
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.LookAt",
+              "PerformerType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
               "TargetType": "AbilityTargetEntity",
-              "Duration": 0
+              "ToTargetRatio": 1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAnimStateWithMove",
@@ -33,6 +43,8 @@
               },
               "AnimLogicState": "NormalAtk",
               "AnimStateName": "Attack_1",
+              "TransitionDuration": 0.05,
+              "StopWhenHitOthers": true,
               "MovingRangeList": [
                 {
                   "TargetType": {
@@ -40,55 +52,49 @@
                     "Alias": "AbilityTargetEntity"
                   },
                   "OffsetTargetDistance": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1.2
+                    "fixedValue": {
+                      "Value": 1.2000000004656612
                     }
                   },
                   "NormalizedTimeStart": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.026999999
+                    "fixedValue": {
+                      "Value": 0.026999999542487784
                     }
                   },
                   "NormalizedTimeEnd": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.057
+                    "fixedValue": {
+                      "Value": 0.056999999577412384
                     }
                   },
                   "DefaultMoveDistance": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 4
+                    "fixedValue": {
+                      "Value": 4.000000000931323
                     }
                   },
                   "MaxMoveDistance": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 5
+                    "fixedValue": {
+                      "Value": 5.000000001164153
                     }
                   },
                   "MaxSpeed": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 300
+                    "fixedValue": {
+                      "Value": 300.0000000698492
                     }
                   },
                   "SteerNormalizedTimeStart": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.026999999
+                    "fixedValue": {
+                      "Value": 0.026999999542487784
                     }
                   },
                   "SteerNormalizedTimeEnd": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.057
+                    "fixedValue": {
+                      "Value": 0.056999999577412384
                     }
                   }
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.WaitAnimState",
@@ -98,30 +104,47 @@
               },
               "AnimStateName": "Attack_1",
               "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.06
+                "fixedValue": {
+                  "Value": 0.060000000069849194
                 }
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAttack",
+              "AttackTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "AbilityTargetEntity"
+              },
+              "AttackRootTargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
+              "TriggerBattle": true,
               "TriggerBattleDelay": 0.1,
               "AttackDetectConfig": {
                 "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
                 "MaxRadius": 2,
-                "FanAngle": 180
+                "FanAngle": 180,
+                "Hight": 1
               },
               "HitConfig": {
                 "HitAnimation": "Hit",
                 "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeAttack01_Hit01.prefab"
-              }
+              },
+              "IncludeProps": true,
+              "AttackDetectCollision": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.VCameraConfigChange",
               "CameraConfig": {
                 "ShakeTemplateName": "LocalPlayer_Himeko_NormalAttack_OnTarget"
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.WaitAnimState",
@@ -131,11 +154,12 @@
               },
               "AnimStateName": "Attack_1",
               "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.14
+                "fixedValue": {
+                  "Value": 0.14000000016298145
                 }
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ],
           "FailedTaskList": [
@@ -143,7 +167,9 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.AdventureByInMotionState",
-                "MotionFlag": "FastRun"
+                "MotionFlag": "FastRun",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               "SuccessTaskList": [
                 {
@@ -154,28 +180,29 @@
                   },
                   "AnimLogicState": "NormalAtk",
                   "AnimStateName": "Attack_1",
+                  "TransitionDuration": 0.05,
+                  "StopWhenHitOthers": true,
                   "MovingRangeList": [
                     {
                       "NormalizedTimeStart": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.026999999
+                        "fixedValue": {
+                          "Value": 0.026999999542487784
                         }
                       },
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.057
+                        "fixedValue": {
+                          "Value": 0.056999999577412384
                         }
                       },
                       "DefaultMoveDistance": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 2
+                        "fixedValue": {
+                          "Value": 2.0000000004656613
                         }
                       }
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.WaitAnimState",
@@ -185,11 +212,12 @@
                   },
                   "AnimStateName": "Attack_1",
                   "NormalizedTimeEnd": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.05
+                    "fixedValue": {
+                      "Value": 0.050000000058207664
                     }
-                  }
+                  },
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.RadialBlurEffect",
@@ -197,12 +225,16 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "Caster"
                   },
+                  "Active": true,
                   "Duration": 0.05,
+                  "BlurX": 0.5,
                   "BlurY": 0.4,
                   "BlurRadius": 1,
                   "Iteration": 4,
                   "BlurStart": 0.005,
-                  "BlurFeather": 0.01
+                  "BlurFeather": 0.01,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.WaitAnimState",
@@ -212,11 +244,12 @@
                   },
                   "AnimStateName": "Attack_1",
                   "NormalizedTimeEnd": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.06
+                    "fixedValue": {
+                      "Value": 0.060000000069849194
                     }
-                  }
+                  },
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.AdventureTriggerAttack",
@@ -224,16 +257,26 @@
                     "$type": "RPG.GameCore.TargetAlias",
                     "Alias": "AllEnemy"
                   },
+                  "AttackRootTargetType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
+                  "TriggerBattle": true,
                   "TriggerBattleDelay": 0.1,
                   "AttackDetectConfig": {
                     "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
                     "MaxRadius": 2,
-                    "FanAngle": 180
+                    "FanAngle": 180,
+                    "Hight": 1
                   },
                   "HitConfig": {
                     "HitAnimation": "Hit",
                     "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeAttack01_Hit01.prefab"
-                  }
+                  },
+                  "IncludeProps": true,
+                  "AttackDetectCollision": true,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.WaitAnimState",
@@ -243,11 +286,12 @@
                   },
                   "AnimStateName": "Attack_1",
                   "NormalizedTimeEnd": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.14
+                    "fixedValue": {
+                      "Value": 0.14000000016298145
                     }
-                  }
+                  },
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 }
               ],
               "FailedTaskList": [
@@ -255,7 +299,9 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.AdventureByInMotionState",
-                    "MotionFlag": "Run"
+                    "MotionFlag": "Run",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   },
                   "SuccessTaskList": [
                     {
@@ -266,28 +312,29 @@
                       },
                       "AnimLogicState": "NormalAtk",
                       "AnimStateName": "Attack_1",
+                      "TransitionDuration": 0.05,
+                      "StopWhenHitOthers": true,
                       "MovingRangeList": [
                         {
                           "NormalizedTimeStart": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0.026999999
+                            "fixedValue": {
+                              "Value": 0.026999999542487784
                             }
                           },
                           "NormalizedTimeEnd": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 0.057
+                            "fixedValue": {
+                              "Value": 0.056999999577412384
                             }
                           },
                           "DefaultMoveDistance": {
-                            "IsDynamic": false,
-                            "FixedValue": {
-                              "Value": 1
+                            "fixedValue": {
+                              "Value": 1.0000000002328306
                             }
                           }
                         }
-                      ]
+                      ],
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -297,11 +344,12 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.05
+                        "fixedValue": {
+                          "Value": 0.050000000058207664
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.RadialBlurEffect",
@@ -309,12 +357,16 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
+                      "Active": true,
                       "Duration": 0.05,
+                      "BlurX": 0.5,
                       "BlurY": 0.4,
                       "BlurRadius": 1,
                       "Iteration": 4,
                       "BlurStart": 0.005,
-                      "BlurFeather": 0.01
+                      "BlurFeather": 0.01,
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -324,11 +376,12 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.06
+                        "fixedValue": {
+                          "Value": 0.060000000069849194
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.AdventureTriggerAttack",
@@ -336,16 +389,26 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
+                      "AttackRootTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "TriggerBattle": true,
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
                         "MaxRadius": 2,
-                        "FanAngle": 180
+                        "FanAngle": 180,
+                        "Hight": 1
                       },
                       "HitConfig": {
                         "HitAnimation": "Hit",
                         "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeAttack01_Hit01.prefab"
-                      }
+                      },
+                      "IncludeProps": true,
+                      "AttackDetectCollision": true,
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -355,11 +418,12 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.14
+                        "fixedValue": {
+                          "Value": 0.14000000016298145
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     }
                   ],
                   "FailedTaskList": [
@@ -371,7 +435,11 @@
                       },
                       "AnimLogicState": "NormalAtk",
                       "AnimStateName": "Attack_1",
-                      "MovingRangeList": []
+                      "TransitionDuration": 0.05,
+                      "StopWhenHitOthers": true,
+                      "MovingRangeList": [],
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -381,11 +449,12 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.05
+                        "fixedValue": {
+                          "Value": 0.050000000058207664
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.RadialBlurEffect",
@@ -393,12 +462,16 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "Caster"
                       },
+                      "Active": true,
                       "Duration": 0.05,
+                      "BlurX": 0.5,
                       "BlurY": 0.4,
                       "BlurRadius": 1,
                       "Iteration": 4,
                       "BlurStart": 0.005,
-                      "BlurFeather": 0.01
+                      "BlurFeather": 0.01,
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -408,11 +481,12 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.06
+                        "fixedValue": {
+                          "Value": 0.060000000069849194
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.AdventureTriggerAttack",
@@ -420,16 +494,26 @@
                         "$type": "RPG.GameCore.TargetAlias",
                         "Alias": "AllEnemy"
                       },
+                      "AttackRootTargetType": {
+                        "$type": "RPG.GameCore.TargetAlias",
+                        "Alias": "Caster"
+                      },
+                      "TriggerBattle": true,
                       "TriggerBattleDelay": 0.1,
                       "AttackDetectConfig": {
                         "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
                         "MaxRadius": 2,
-                        "FanAngle": 180
+                        "FanAngle": 180,
+                        "Hight": 1
                       },
                       "HitConfig": {
                         "HitAnimation": "Hit",
                         "HitEffect": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeAttack01_Hit01.prefab"
-                      }
+                      },
+                      "IncludeProps": true,
+                      "AttackDetectCollision": true,
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.WaitAnimState",
@@ -439,17 +523,21 @@
                       },
                       "AnimStateName": "Attack_1",
                       "NormalizedTimeEnd": {
-                        "IsDynamic": false,
-                        "FixedValue": {
-                          "Value": 0.14
+                        "fixedValue": {
+                          "Value": 0.14000000016298145
                         }
-                      }
+                      },
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true
                 }
-              ]
+              ],
+              "TaskEnabled": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ]
     },
@@ -457,14 +545,17 @@
       "ManualTriggerType": "BySummonUnit",
       "Name": "LocalPlayer_Rappa_00_MazeSkill_TriggerHitMonster",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
           "CameraConfig": {
             "ShakeTemplateName": "Common_Rapid_Light"
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.TargetTimeSlow",
@@ -473,18 +564,45 @@
             "Alias": "Caster"
           },
           "TimeScale": 0.1,
-          "UnscaledDuration": 0.02
+          "UnscaledDuration": 0.02,
+          "FadeInTime": {},
+          "FadeOutTime": {},
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdventureTriggerAttack",
+          "AttackTargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "AbilityTargetEntity"
+          },
+          "AttackRootTargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "TriggerBattle": true,
           "AttackDetectConfig": {
             "$type": "RPG.GameCore.AdventureAttackDetectCircleConfig",
             "MaxRadius": 3,
             "FanAngle": 360,
+            "Hight": 1,
             "Offset": {
-              "X": 0,
-              "Y": 0.5,
-              "Z": 0.5
+              "y": 0.5,
+              "z": 0.5,
+              "normalized": {
+                "y": 0.707106769,
+                "z": 0.707106769,
+                "normalized": {
+                  "y": 0.7071068,
+                  "z": 0.7071068,
+                  "magnitude": 1,
+                  "sqrMagnitude": 1.00000012
+                },
+                "magnitude": 0.99999994,
+                "sqrMagnitude": 0.99999994
+              },
+              "magnitude": 0.707106769,
+              "sqrMagnitude": 0.5
             }
           },
           "HitConfig": {
@@ -502,23 +620,34 @@
                   "Alias": "Caster"
                 },
                 "SummonUnitID": 13171
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdvSetSkillSlotData",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
               "Datas": [
                 {
-                  "State": "Normal"
+                  "State": "Normal",
+                  "BindSkillIndex": -2
                 },
                 {
                   "Slot": "MazeSkill",
-                  "State": "Normal"
+                  "State": "Normal",
+                  "BindSkillIndex": -2
                 },
                 {
                   "Slot": "CustomSkill",
+                  "BindSkillIndex": -2,
                   "SkillBtnPrefab": "UI/Maze/Customize/MazeSkillBtn_1317.prefab"
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerMove",
@@ -526,7 +655,15 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "IsStop": true
+              "MaxSteerSpeed": {
+                "fixedValue": {
+                  "Value": -1.0000000002328306
+                }
+              },
+              "AutoMove": true,
+              "IsStop": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAnimStateWithMove",
@@ -537,7 +674,8 @@
               "AnimLogicState": "CustomSkill",
               "AnimStateName": "MazeSkill_EndOnBattle",
               "TransitionDuration": 0.01,
-              "StopWhenHitOthers": false
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AddMazeBuff",
@@ -545,7 +683,9 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "ParamEntity"
               },
-              "ID": 131701
+              "ID": 131701,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.RemoveMazeBuff",
@@ -553,9 +693,15 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "ID": 131702
+              "ID": 131702,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "IncludeProps": true,
+          "AttackDetectCollision": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -563,7 +709,8 @@
       "ManualTriggerType": "Free",
       "Name": "LocalPlayer_Rappa_00_MazeSkill_End",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
@@ -573,14 +720,14 @@
             "PredicateList": [
               {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
                 "DynamicKey": "Rappa_00_Achievenment",
                 "CompareType": "LessEqual",
-                "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 0
-                  }
-                }
+                "CompareValue": {},
+                "TaskEnabled": true
               },
               {
                 "$type": "RPG.GameCore.ByIsContainAdventureModifier",
@@ -589,16 +736,22 @@
                   "Alias": "Caster"
                 },
                 "ModifierName": "ADV_StageAbility_Maze_Achievenment",
-                "Inverse": true
+                "Inverse": true,
+                "TaskEnabled": true,
+                "IsClientOnly": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           },
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.SetAdvAchievement",
-              "QuestID": 4073604
+              "QuestID": 4073604,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.RemoveAdventureModifier",
@@ -606,7 +759,9 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "ADV_StageAbility_Maze_Achievenment"
+          "ModifierName": "ADV_StageAbility_Maze_Achievenment",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdventureTriggerMove",
@@ -614,10 +769,24 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "IsStop": true
+          "MaxSteerSpeed": {
+            "fixedValue": {
+              "Value": -1.0000000002328306
+            }
+          },
+          "AutoMove": true,
+          "IsStop": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdventureSubmitSkill"
+          "$type": "RPG.GameCore.AdventureSubmitSkill",
+          "Caster": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.DestroySummonUnit",
@@ -628,37 +797,56 @@
               "Alias": "Caster"
             },
             "SummonUnitID": 13171
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdvSetSkillSlotData",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Datas": [
             {
-              "State": "Normal"
+              "State": "Normal",
+              "BindSkillIndex": -2
             },
             {
               "Slot": "MazeSkill",
-              "State": "Normal"
+              "State": "Normal",
+              "BindSkillIndex": -2
             },
             {
               "Slot": "CustomSkill",
+              "BindSkillIndex": -2,
               "SkillBtnPrefab": "UI/Maze/Customize/MazeSkillBtn_1317.prefab"
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AnimSetParameter",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "ParameterName": "IsSprinting",
-          "ParameterType": "Bool"
+          "ParameterType": "Bool",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.3
+            "fixedValue": {
+              "Value": 0.30000000034924595
             }
-          }
+          },
+          "MaxAdvencePerTick": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
@@ -666,13 +854,25 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "Active": false
+          "Duration": -1,
+          "BlurX": 0.5,
+          "BlurY": 0.5,
+          "BlurRadius": 0.5,
+          "Iteration": 6,
+          "BlurStart": 0.2,
+          "BlurFeather": 0.1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.UnLockCamera"
+          "$type": "RPG.GameCore.UnLockCamera",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdvHideRushBtn"
+          "$type": "RPG.GameCore.AdvHideRushBtn",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RemoveAdventureModifier",
@@ -680,12 +880,16 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "ADV_Modifier_Maze_Rappa_HolyShield"
+          "ModifierName": "ADV_Modifier_Maze_Rappa_HolyShield",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.AdventureByCheckMoveInput"
+            "$type": "RPG.GameCore.AdventureByCheckMoveInput",
+            "TaskEnabled": true,
+            "IsClientOnly": true
           },
           "SuccessTaskList": [
             {
@@ -694,16 +898,27 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "IsStop": true
+              "MaxSteerSpeed": {
+                "fixedValue": {
+                  "Value": -1.0000000002328306
+                }
+              },
+              "AutoMove": true,
+              "IsStop": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerFastRun",
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.RemoveEffect",
@@ -711,7 +926,12 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeSkill01_Trail01.prefab"
+          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeSkill01_Trail01.prefab",
+          "IsNeedFadeOut": true,
+          "FadeOutRegionStart": -1,
+          "FadeOutRegionEnd": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RemoveMazeBuff",
@@ -719,7 +939,9 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ID": 131702
+          "ID": 131702,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -727,16 +949,29 @@
       "ManualTriggerType": "Free",
       "Name": "LocalPlayer_Rappa_00_MazeSkill_Abort",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
           "$type": "RPG.GameCore.AnimSetParameter",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "ParameterName": "IsSprinting",
-          "ParameterType": "Bool"
+          "ParameterType": "Bool",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdventureSubmitSkill"
+          "$type": "RPG.GameCore.AdventureSubmitSkill",
+          "Caster": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.DestroySummonUnit",
@@ -747,7 +982,9 @@
               "Alias": "Caster"
             },
             "SummonUnitID": 13171
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RemoveMazeBuff",
@@ -755,23 +992,34 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ID": 131702
+          "ID": 131702,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdvSetSkillSlotData",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Datas": [
             {
-              "State": "Normal"
+              "State": "Normal",
+              "BindSkillIndex": -2
             },
             {
               "Slot": "MazeSkill",
-              "State": "Normal"
+              "State": "Normal",
+              "BindSkillIndex": -2
             },
             {
               "Slot": "CustomSkill",
+              "BindSkillIndex": -2,
               "SkillBtnPrefab": "UI/Maze/Customize/MazeSkillBtn_1317.prefab"
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdventureTriggerMove",
@@ -779,7 +1027,15 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "IsStop": true
+          "MaxSteerSpeed": {
+            "fixedValue": {
+              "Value": -1.0000000002328306
+            }
+          },
+          "AutoMove": true,
+          "IsStop": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RadialBlurEffect",
@@ -787,13 +1043,25 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "Active": false
+          "Duration": -1,
+          "BlurX": 0.5,
+          "BlurY": 0.5,
+          "BlurRadius": 0.5,
+          "Iteration": 6,
+          "BlurStart": 0.2,
+          "BlurFeather": 0.1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.UnLockCamera"
+          "$type": "RPG.GameCore.UnLockCamera",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdvHideRushBtn"
+          "$type": "RPG.GameCore.AdvHideRushBtn",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RemoveAdventureModifier",
@@ -801,7 +1069,9 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "ADV_Modifier_Maze_Rappa_HolyShield"
+          "ModifierName": "ADV_Modifier_Maze_Rappa_HolyShield",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.RemoveEffect",
@@ -809,7 +1079,12 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeSkill01_Trail01.prefab"
+          "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Rappa_00/Eff_Avatar_Rappa_00_MazeSkill01_Trail01.prefab",
+          "IsNeedFadeOut": true,
+          "FadeOutRegionStart": -1,
+          "FadeOutRegionEnd": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -817,22 +1092,33 @@
       "ManualTriggerType": "Free",
       "Name": "LocalPlayer_Rappa_00_MazeSkill_ListenInput",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
           "$type": "RPG.GameCore.AdvSetSkillSlotData",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Datas": [
-            {},
             {
-              "Slot": "MazeSkill"
+              "BindSkillIndex": -2
+            },
+            {
+              "Slot": "MazeSkill",
+              "BindSkillIndex": -2
             },
             {
               "Slot": "CustomSkill",
               "State": "Cancel",
+              "BindSkillIndex": -2,
               "SkillBtnPrefab": "UI/Maze/Customize/MazeSkillBtn_1317.prefab"
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitSkillInput",
@@ -843,30 +1129,37 @@
           ],
           "WaitInteraction": true,
           "MaxWaitTime": {
-            "IsDynamic": true,
-            "PostfixExpr": {
-              "OpCodes": "AQAK",
-              "FixedValues": [],
-              "DynamicHashes": [
-                1239462885
-              ]
+            "fixedValue": {
+              "Value": -34706.00000808062
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
           },
-          "DynamicKey": "DV_AbilityEnd"
+          "DynamicKey": "DV_AbilityEnd",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.AdventureTriggerTargetAbility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "SkillType": "MazeSkill",
-          "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_End"
+          "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_End",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -874,23 +1167,34 @@
       "OnAbort": [
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
           },
-          "DynamicKey": "DV_AbilityEnd"
+          "DynamicKey": "DV_AbilityEnd",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.AdventureTriggerTargetAbility",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "SkillType": "MazeSkill",
-          "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_Abort"
+          "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_Abort",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ],
       "Name": "LocalPlayer_Rappa_00_MazeSkill",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
@@ -899,7 +1203,9 @@
             "$type": "RPG.GameCore.TargetAlias",
             "Alias": "Caster"
           },
-          "ModifierName": "ADV_StageAbility_Maze_IgnoreWeakness_MazeSkillMark"
+          "ModifierName": "ADV_StageAbility_Maze_IgnoreWeakness_MazeSkillMark",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.DefineDynamicValue",
@@ -908,35 +1214,37 @@
             "Alias": "Caster"
           },
           "DynamicKey": "DV_AbilityEnd",
-          "ContextScope": "ContextCaster"
+          "ResetValue": {},
+          "ContextScope": "ContextCaster",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Value": {
-            "IsDynamic": true,
-            "PostfixExpr": {
-              "OpCodes": "AQAK",
-              "FixedValues": [],
-              "DynamicHashes": [
-                129132116
-              ]
+            "fixedValue": {
+              "Value": -34706.00000808062
             }
           },
-          "DynamicKey": "SprintModifiedSteerSpeed"
+          "DynamicKey": "SprintModifiedSteerSpeed",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Value": {
-            "IsDynamic": true,
-            "PostfixExpr": {
-              "OpCodes": "AQAK",
-              "FixedValues": [],
-              "DynamicHashes": [
-                1394301777
-              ]
+            "fixedValue": {
+              "Value": -34706.00000808062
             }
           },
-          "DynamicKey": "SprintModifiedSpeed"
+          "DynamicKey": "SprintModifiedSpeed",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.VCameraConfigChange",
@@ -949,12 +1257,15 @@
                 "RecoveryCurvePath": "Camera/BlendCurve/FastRunRecoverDampCurve.asset"
               }
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
-            "$type": "RPG.GameCore.ByHaveAbilityTarget"
+            "$type": "RPG.GameCore.ByHaveAbilityTarget",
+            "TaskEnabled": true
           },
           "SuccessTaskList": [
             {
@@ -964,7 +1275,9 @@
                 "PredicateList": [
                   {
                     "$type": "RPG.GameCore.AdventureByCheckMoveInput",
-                    "Inverse": true
+                    "Inverse": true,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   },
                   {
                     "$type": "RPG.GameCore.ByAnd",
@@ -981,11 +1294,13 @@
                         },
                         "CompareType": "Less",
                         "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 2
+                          "fixedValue": {
+                            "Value": 2.0000000004656613
                           }
-                        }
+                        },
+                        "IgnoreRadius": true,
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       },
                       {
                         "$type": "RPG.GameCore.AdventureByMoveInputTowardsTarget",
@@ -994,13 +1309,15 @@
                           "Alias": "AbilityTargetEntity"
                         },
                         "ToleranceAngle": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 75
+                          "fixedValue": {
+                            "Value": 75.0000000174623
                           }
-                        }
+                        },
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       }
-                    ]
+                    ],
+                    "TaskEnabled": true
                   },
                   {
                     "$type": "RPG.GameCore.ByAnd",
@@ -1017,11 +1334,13 @@
                         },
                         "CompareType": "Less",
                         "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 6
+                          "fixedValue": {
+                            "Value": 6.000000001396984
                           }
-                        }
+                        },
+                        "IgnoreRadius": true,
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       },
                       {
                         "$type": "RPG.GameCore.AdventureByMoveInputTowardsTarget",
@@ -1030,13 +1349,15 @@
                           "Alias": "AbilityTargetEntity"
                         },
                         "ToleranceAngle": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 45
+                          "fixedValue": {
+                            "Value": 45.00000001047738
                           }
-                        }
+                        },
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       }
-                    ]
+                    ],
+                    "TaskEnabled": true
                   },
                   {
                     "$type": "RPG.GameCore.ByAnd",
@@ -1053,11 +1374,13 @@
                         },
                         "CompareType": "GreaterEqual",
                         "CompareValue": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 6
+                          "fixedValue": {
+                            "Value": 6.000000001396984
                           }
-                        }
+                        },
+                        "IgnoreRadius": true,
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       },
                       {
                         "$type": "RPG.GameCore.AdventureByMoveInputTowardsTarget",
@@ -1066,21 +1389,30 @@
                           "Alias": "AbilityTargetEntity"
                         },
                         "ToleranceAngle": {
-                          "IsDynamic": false,
-                          "FixedValue": {
-                            "Value": 20
+                          "fixedValue": {
+                            "Value": 20.000000004656613
                           }
-                        }
+                        },
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       }
-                    ]
+                    ],
+                    "TaskEnabled": true
                   }
-                ]
+                ],
+                "TaskEnabled": true
               },
               "SuccessTaskList": [
                 {
                   "$type": "RPG.GameCore.LookAt",
+                  "PerformerType": {
+                    "$type": "RPG.GameCore.TargetAlias",
+                    "Alias": "Caster"
+                  },
                   "TargetType": "AbilityTargetEntity",
-                  "Duration": 0
+                  "ToTargetRatio": 1,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 }
               ],
               "FailedTaskList": [
@@ -1095,26 +1427,23 @@
                     "Alias": "AbilityTargetEntity"
                   },
                   "MaxDuration": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0.0009999999
+                    "fixedValue": {
+                      "Value": 0.0009999999313149602
                     }
                   },
-                  "MaxDistance": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 0
-                    }
-                  },
+                  "MaxDistance": {},
                   "MaxSteerSpeed": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 1000000
+                    "fixedValue": {
+                      "Value": 1000000.0002328306
                     }
                   },
-                  "CanPlayerControl": true
+                  "CanPlayerControl": true,
+                  "AutoMove": true,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 }
-              ]
+              ],
+              "TaskEnabled": true
             }
           ],
           "FailedTaskList": [
@@ -1129,29 +1458,30 @@
                 "Alias": "AbilityTargetEntity"
               },
               "MaxDuration": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.0009999999
+                "fixedValue": {
+                  "Value": 0.0009999999313149602
                 }
               },
-              "MaxDistance": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
+              "MaxDistance": {},
               "MaxSteerSpeed": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1000000
+                "fixedValue": {
+                  "Value": 1000000.0002328306
                 }
               },
-              "CanPlayerControl": true
+              "CanPlayerControl": true,
+              "AutoMove": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.CreateSummonUnit",
+          "Summoner": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "SummonUnitID": 13171,
           "AttachTarget": {
             "$type": "RPG.GameCore.TargetAlias",
@@ -1162,17 +1492,20 @@
             "Alias": "Caster"
           },
           "Distance": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
           },
+          "OffsetX": {},
+          "OffsetY": {},
+          "YawAngle": {},
           "Duration": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 25
+            "fixedValue": {
+              "Value": 25.000000005820766
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AddMazeBuff",
@@ -1182,32 +1515,34 @@
           },
           "ID": 131702,
           "LifeTime": {
-            "IsDynamic": true,
-            "PostfixExpr": {
-              "OpCodes": "AQAK",
-              "FixedValues": [],
-              "DynamicHashes": [
-                1239462885
-              ]
+            "fixedValue": {
+              "Value": -34706.00000808062
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.IncludeTaskListTemplate",
-          "Name": "Rappa_Sprint_PreProcess"
+          "Name": "Rappa_Sprint_PreProcess",
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareDynamicValue",
+            "TargetType": {
+              "$type": "RPG.GameCore.TargetAlias",
+              "Alias": "Caster"
+            },
             "DynamicKey": "DV_AbilityEnd",
             "CompareType": "Equal",
             "CompareValue": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 1
+              "fixedValue": {
+                "Value": 1.0000000002328306
               }
-            }
+            },
+            "TaskEnabled": true
           },
           "FailedTaskList": [
             {
@@ -1221,69 +1556,43 @@
                 "Alias": "AbilityTargetEntity"
               },
               "MaxDuration": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAAAAIK",
-                  "FixedValues": [
-                    {
-                      "Value": 0.5
-                    }
-                  ],
-                  "DynamicHashes": [
-                    1239462885
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
               "MaxSpeed": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAK",
-                  "FixedValues": [],
-                  "DynamicHashes": [
-                    -1959864800
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
               "MinSpeed": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAK",
-                  "FixedValues": [],
-                  "DynamicHashes": [
-                    -1959864800
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
               "MaxSteerSpeed": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAK",
-                  "FixedValues": [],
-                  "DynamicHashes": [
-                    -1162916719
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
-              "CanPlayerControl": true
+              "CanPlayerControl": true,
+              "AutoMove": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ],
-      "DynamicValues": {
-        "Values": {
-          "1394301777": {},
-          "129132116": {},
-          "-1959864800": {},
-          "-1162916719": {}
-        }
-      },
       "TaskListTemplate": [
         {
           "Name": "Rappa_Sprint_PreProcess",
           "TaskList": [
             {
               "$type": "RPG.GameCore.AdvHideRushBtn",
-              "IsHide": true
+              "IsHide": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AddAdventureModifier",
@@ -1293,16 +1602,23 @@
               },
               "ModifierName": "ADV_Modifier_Maze_Rappa_HolyShield",
               "LifeTime": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 22
+                "fixedValue": {
+                  "Value": 22.000000005122274
                 }
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
               "ParameterName": "EnterBattle",
-              "ParameterType": "Bool"
+              "ParameterType": "Bool",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.RadialBlurEffect",
@@ -1310,13 +1626,21 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "Active": false
+              "Duration": -1,
+              "BlurX": 0.5,
+              "BlurY": 0.5,
+              "BlurRadius": 0.5,
+              "Iteration": 6,
+              "BlurStart": 0.2,
+              "BlurFeather": 0.1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.LockCamera",
-              "LockAxisY": false,
-              "LockAxisX": false,
-              "LockZoom": true
+              "LockZoom": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.VCameraConfigChange",
@@ -1325,16 +1649,25 @@
                   "ZoomChangeParam": {
                     "TargetValue": -0.5,
                     "Time": 0.3,
-                    "ChangeCurvePath": "Camera/BlendCurve/BlendCut_1317_MazeSkillMove_Pre.asset"
+                    "ChangeCurvePath": "Camera/BlendCurve/BlendCut_1317_MazeSkillMove_Pre.asset",
+                    "RecoveryTime": -1
                   }
                 }
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AnimSetParameter",
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
+              },
               "ParameterName": "IsSprinting",
               "ParameterType": "Bool",
-              "Value": 1
+              "Value": 1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerAnimStateWithMove",
@@ -1344,11 +1677,14 @@
               },
               "AnimLogicState": "CustomSkill",
               "AnimStateName": "MazeSkill_Start",
-              "TransitionDuration": 0,
-              "StopWhenHitOthers": false
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
-              "$type": "RPG.GameCore.WaitFrame"
+              "$type": "RPG.GameCore.WaitFrame",
+              "WaitFrameCount": 1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.RemoveAdventureModifier",
@@ -1356,25 +1692,31 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "ModifierName": "ADV_Modifier_Maze_Rappa_IsHit"
+              "ModifierName": "ADV_Modifier_Maze_Rappa_IsHit",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureSkillTriggerAbility",
-              "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_ListenInput"
+              "AbilityName": "LocalPlayer_Rappa_00_MazeSkill_ListenInput",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.SetDynamicValue",
-              "Value": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
+              "TargetType": {
+                "$type": "RPG.GameCore.TargetAlias",
+                "Alias": "Caster"
               },
-              "DynamicKey": "Rappa_00_Achievenment"
+              "Value": {},
+              "DynamicKey": "Rappa_00_Achievenment",
+              "TaskEnabled": true
             },
             {
               "$type": "RPG.GameCore.AdventureSkillTriggerAbility",
-              "AbilityName": "LocalPlayer_Rappa_00_Achievenment"
+              "AbilityName": "LocalPlayer_Rappa_00_Achievenment",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerMove",
@@ -1387,39 +1729,30 @@
                 "Alias": "AbilityTargetEntity"
               },
               "MaxDuration": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.6
+                "fixedValue": {
+                  "Value": 0.6000000006984919
                 }
               },
               "MaxSpeed": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAK",
-                  "FixedValues": [],
-                  "DynamicHashes": [
-                    -1959864800
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
               "MinSpeed": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
+                "fixedValue": {
+                  "Value": 1.0000000002328306
                 }
               },
               "SpeedCurve": "Camera/BlendCurve/BlendCut_1317_MazeSkillMove_Pre.asset",
               "MaxSteerSpeed": {
-                "IsDynamic": true,
-                "PostfixExpr": {
-                  "OpCodes": "AQAK",
-                  "FixedValues": [],
-                  "DynamicHashes": [
-                    -1162916719
-                  ]
+                "fixedValue": {
+                  "Value": -34706.00000808062
                 }
               },
-              "CanPlayerControl": true
+              "CanPlayerControl": true,
+              "AutoMove": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.WaitAnimState",
@@ -1429,11 +1762,12 @@
               },
               "AnimStateName": "MazeSkill_Start",
               "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.173
+                "fixedValue": {
+                  "Value": 0.17299999999185092
                 }
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.WaitAnimState",
@@ -1443,12 +1777,13 @@
               },
               "AnimStateName": "MazeSkill_Start",
               "NormalizedTimeEnd": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0.999
+                "fixedValue": {
+                  "Value": 0.9990000005343463
                 }
               },
-              "SkipWhenStateChange": true
+              "SkipWhenStateChange": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.AdventureTriggerMove",
@@ -1456,7 +1791,15 @@
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "Caster"
               },
-              "IsStop": true
+              "MaxSteerSpeed": {
+                "fixedValue": {
+                  "Value": -1.0000000002328306
+                }
+              },
+              "AutoMove": true,
+              "IsStop": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ]
         }
@@ -1466,7 +1809,8 @@
       "ManualTriggerType": "Free",
       "Name": "LocalPlayer_Rappa_00_Achievenment",
       "TargetInfo": {
-        "TargetType": "SkillPointEntityOrNone"
+        "TargetType": "SkillPointEntityOrNone",
+        "MaxTargetCount": 1
       },
       "OnStart": [
         {
@@ -1477,19 +1821,12 @@
           },
           "ModifierName": "ADV_StageAbility_Maze_Achievenment",
           "LifeTime": {
-            "IsDynamic": true,
-            "PostfixExpr": {
-              "OpCodes": "AQAAAAMK",
-              "FixedValues": [
-                {
-                  "Value": 0.1
-                }
-              ],
-              "DynamicHashes": [
-                1239462885
-              ]
+            "fixedValue": {
+              "Value": -34706.00000808062
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitFor",
@@ -1503,34 +1840,45 @@
                   "AirWallCollider",
                   "NPC",
                   "Prop"
-                ]
+                ],
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.ByCompareDynamicValue",
+                "TargetType": {
+                  "$type": "RPG.GameCore.TargetAlias",
+                  "Alias": "Caster"
+                },
                 "DynamicKey": "DV_AbilityEnd",
                 "CompareType": "Equal",
                 "CompareValue": {
-                  "IsDynamic": false,
-                  "FixedValue": {
-                    "Value": 1
+                  "fixedValue": {
+                    "Value": 1.0000000002328306
                   }
-                }
+                },
+                "TaskEnabled": true
               }
-            ]
-          }
+            ],
+            "TaskEnabled": true
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SetDynamicValue",
+          "TargetType": {
+            "$type": "RPG.GameCore.TargetAlias",
+            "Alias": "Caster"
+          },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
           },
-          "DynamicKey": "Rappa_00_Achievenment"
+          "DynamicKey": "Rappa_00_Achievenment",
+          "TaskEnabled": true
         }
       ]
     }
-  ],
-  "GlobalModifiers": {}
+  ]
 }

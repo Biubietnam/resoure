@@ -15,17 +15,32 @@
           "MainMissionIDList": [],
           "PerformanceIDList": [],
           "PerformanceIDDsList": [],
-          "CustomValueMainMissionIDList": []
+          "CustomValueMainMissionIDList": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "E",
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
-          "UseNewStreamingSourceType": false
+          "HideMunicipalOther": true,
+          "HideMonster": true,
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.AdvNpcFaceToPlayer"
+          "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
+          "FromDialog": true,
+          "TryFaceToFace": true,
+          "NpcLookAtPlayer": true,
+          "PlayerLookAtNpc": true,
+          "StopLookAtOnGraphEnd": true,
+          "TurnBackOnGraphEnd": true,
+          "WaitFinishMode": "WaitFaceAngle",
+          "ForceToStandBy": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
@@ -35,59 +50,79 @@
               {
                 "$type": "RPG.GameCore.ByCompareSubMissionState",
                 "SubMissionID": 404031301,
-                "SubMissionState": "Started"
+                "SubMissionState": "Started",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.ByCompareSubMissionState",
                 "SubMissionID": 404031302,
-                "SubMissionState": "Started"
+                "SubMissionState": "Started",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.ByCompareSubMissionState",
                 "SubMissionID": 404031303,
-                "SubMissionState": "Started"
+                "SubMissionState": "Started",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.ByCompareSubMissionState",
                 "SubMissionID": 404031304,
-                "SubMissionState": "Started"
+                "SubMissionState": "Started",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               {
                 "$type": "RPG.GameCore.ByCompareSubMissionState",
                 "SubMissionID": 404031305,
-                "SubMissionState": "Started"
+                "SubMissionState": "Started",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           },
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+              "KeepDisplay": true,
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503035001,
                   "ProtectTime": 0.3
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
-              "$type": "RPG.GameCore.EndPerformance"
+              "$type": "RPG.GameCore.EndPerformance",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ],
           "FailedTaskList": [
             {
               "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+              "KeepDisplay": true,
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 503035001,
                   "ProtectTime": 0.3
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.PlayOptionTalk",
               "OptionList": [
                 {
-                  "$type": "RPG.GameCore.OptionTalkInfo",
                   "OptionTextmapID": {
                     "Hash": -1812081910
                   },
@@ -96,11 +131,12 @@
                   "VisibleFilter": {
                     "$type": "RPG.GameCore.ByCompareSubMissionState",
                     "SubMissionID": 404031301,
-                    "SubMissionState": "Finish"
+                    "SubMissionState": "Finish",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.OptionTalkInfo",
                   "OptionTextmapID": {
                     "Hash": -1812081909
                   },
@@ -109,11 +145,12 @@
                   "VisibleFilter": {
                     "$type": "RPG.GameCore.ByCompareSubMissionState",
                     "SubMissionID": 404031302,
-                    "SubMissionState": "Finish"
+                    "SubMissionState": "Finish",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.OptionTalkInfo",
                   "OptionTextmapID": {
                     "Hash": -1812081908
                   },
@@ -122,11 +159,12 @@
                   "VisibleFilter": {
                     "$type": "RPG.GameCore.ByCompareSubMissionState",
                     "SubMissionID": 404031303,
-                    "SubMissionState": "Finish"
+                    "SubMissionState": "Finish",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.OptionTalkInfo",
                   "OptionTextmapID": {
                     "Hash": -1812081907
                   },
@@ -135,11 +173,12 @@
                   "VisibleFilter": {
                     "$type": "RPG.GameCore.ByCompareSubMissionState",
                     "SubMissionID": 404031304,
-                    "SubMissionState": "Finish"
+                    "SubMissionState": "Finish",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 },
                 {
-                  "$type": "RPG.GameCore.OptionTalkInfo",
                   "OptionTextmapID": {
                     "Hash": -1812081906
                   },
@@ -148,12 +187,17 @@
                   "VisibleFilter": {
                     "$type": "RPG.GameCore.ByCompareSubMissionState",
                     "SubMissionID": 404031305,
-                    "SubMissionState": "Finish"
+                    "SubMissionState": "Finish",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   }
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ]
     },
@@ -163,12 +207,18 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PropInteractTitle_325"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
           "PostDuration": -0.5,
-          "Action": []
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetFloorCustomFloat",
@@ -176,19 +226,27 @@
             "Value": "FCV_ParkCar"
           },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
           "PrevDuration": -0.5,
-          "Action": []
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -198,12 +256,18 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PropInteractTitle_326"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
           "PostDuration": -0.5,
-          "Action": []
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetFloorCustomFloat",
@@ -211,19 +275,27 @@
             "Value": "FCV_ParkCar"
           },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 3
+            "fixedValue": {
+              "Value": 3.000000000698492
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
           "PrevDuration": -0.5,
-          "Action": []
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -233,12 +305,18 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PropInteractTitle_327"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
           "PostDuration": -0.5,
-          "Action": []
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetFloorCustomFloat",
@@ -246,19 +324,27 @@
             "Value": "FCV_ParkCar"
           },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 2
+            "fixedValue": {
+              "Value": 2.0000000004656613
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
           "PrevDuration": -0.5,
-          "Action": []
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -268,12 +354,18 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PropInteractTitle_328"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
           "PostDuration": -0.5,
-          "Action": []
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetFloorCustomFloat",
@@ -281,19 +373,27 @@
             "Value": "FCV_ParkCar"
           },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 4
+            "fixedValue": {
+              "Value": 4.000000000931323
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
           "PrevDuration": -0.5,
-          "Action": []
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -303,12 +403,18 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PropInteractTitle_329"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
           "PostDuration": -0.5,
-          "Action": []
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetFloorCustomFloat",
@@ -316,29 +422,41 @@
             "Value": "FCV_ParkCar"
           },
           "Value": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 5
+            "fixedValue": {
+              "Value": 5.000000001164153
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
           "PrevDuration": -0.5,
-          "Action": []
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "Action": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

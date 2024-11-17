@@ -4,10 +4,14 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -17,23 +21,27 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence_202040095"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
           "CustomString": {
             "Custom": true,
             "Key": "OnNishastagaEffectOpen"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0.8
+            "fixedValue": {
+              "Value": 0.8000000009313226
             }
-          }
+          },
+          "MaxAdvencePerTick": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdventureCameraLookAtSimple",
@@ -50,15 +58,35 @@
           "LookAtRecoverCurvePath": "Camera/BlendCurve/BlendCut_1305_BP_03.asset",
           "EnableOverrideLookAtOffset": true,
           "OverrideLookAtOffset": {
-            "X": 2,
-            "Y": 2,
-            "Z": 4
-          }
+            "x": 2,
+            "y": 2,
+            "z": 4,
+            "normalized": {
+              "x": 0.408248276,
+              "y": 0.408248276,
+              "z": 0.816496551,
+              "normalized": {
+                "x": 0.4082483,
+                "y": 0.4082483,
+                "z": 0.8164966,
+                "magnitude": 1,
+                "sqrMagnitude": 1
+              },
+              "magnitude": 0.99999994,
+              "sqrMagnitude": 0.99999994
+            },
+            "magnitude": 4.89897966,
+            "sqrMagnitude": 24
+          },
+          "FollowLookAtTarget": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdvEntityFaceTo",
           "SourceType": {
-            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer"
+            "$type": "RPG.GameCore.TargetFetchAdvLocalPlayer",
+            "IncludeStoryPlayer": true
           },
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAnchor",
@@ -66,16 +94,27 @@
             "GroupInstanceID": 7
           },
           "EnableSteer": true,
-          "ForceToStandBy": true
+          "EnableLookAt": true,
+          "LookAtPoint": "Head",
+          "FinishImmediately": true,
+          "WaitFinishMode": "WaitAnimFinish",
+          "ForceToStandBy": true,
+          "TurnBackOnGraphEnd": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 202040088,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdventureCameraLookAtSimple",
@@ -85,10 +124,15 @@
             "GroupID": 70,
             "GroupInstanceID": 7
           },
-          "LockCameraInput": true
+          "LockCameraInput": true,
+          "FollowLookAtTarget": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -99,10 +143,15 @@
           "PerformanceType": "D",
           "CreateCharacterList": [],
           "EntityVisiableList": [],
-          "HideMonster": false,
+          "HideMunicipalCrowd": true,
+          "HideMunicipalPedestrian": true,
+          "HideMunicipalOther": true,
           "PropVisiableList": [],
-          "UseNewStreamingSourceType": false,
-          "MarkStreamingItems": []
+          "MarkStreamingItems": [],
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PropSetVisibility",
@@ -112,45 +161,56 @@
             "FetchType": "SinglePropByPropID",
             "SinglePropID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 70
+                "fixedValue": {
+                  "Value": 70.00000001629815
                 }
               },
               "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300002
+                "fixedValue": {
+                  "Value": 300002.00006984966
                 }
               }
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 202040086,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayOptionTalk",
           "OptionList": [
             {
-              "$type": "RPG.GameCore.OptionTalkInfo",
               "TalkSentenceID": 202040087,
               "OptionIconType": "ChatContinueIcon",
               "TriggerCustomString": "TalkSentence_202040095"
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }
   ],
   "ValueSource": {
     "Values": [
+      {
+        "$type": "RPG.GameCore.SharedString",
+        "Key": "OnNishastagaEffectOpen"
+      }
+    ],
+    "SharedValues": [
       {
         "$type": "RPG.GameCore.SharedString",
         "Key": "OnNishastagaEffectOpen"

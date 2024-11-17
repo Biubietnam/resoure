@@ -6,10 +6,23 @@
         {
           "$type": "RPG.GameCore.LevelPerformanceInitialize",
           "PerformanceType": "D",
-          "UseNewStreamingSourceType": false
+          "HideMunicipalCrowd": true,
+          "HideMunicipalPedestrian": true,
+          "HideMunicipalOther": true,
+          "HideMonster": true,
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.PlayFullScreenTransfer"
+          "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.StartDialogueEntityInteract",
@@ -18,15 +31,13 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 204
+                "fixedValue": {
+                  "Value": 204.00000004749745
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
@@ -54,85 +65,88 @@
                 "$type": "RPG.GameCore.SharedFloat",
                 "Key": "ResetEntityTransform"
               }
+            ],
+            "SharedValues": [
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Level/Common_Adventure/Dreamland.prefab",
+                "Key": "DialogueEntityInteract_AreaPath"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Dreamland,Dreamland_Camera",
+                "Key": "DialogueEntityInteract_CameraKey"
+              },
+              {
+                "$type": "RPG.GameCore.SharedString",
+                "Value": "Dreamland",
+                "Key": "DialogueEntityInteract_AreaName"
+              },
+              {
+                "$type": "RPG.GameCore.SharedFloat",
+                "Key": "ResetEntityTransform"
+              }
             ]
           },
           "OverrideTasks": {
             "OverrideVCamBlendConfig": true,
             "VCamBlendConfig": {
               "ExportToJson": true,
-              "BlendType": "Cut"
+              "BlendType": "Cut",
+              "FOVSmoothDampTime": -1,
+              "FrameBlendWeightStart": 1,
+              "FrameBlendDuration": 1
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081201,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081201
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081202,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081202
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081203,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081203
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081204,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081204
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081205,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081205
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081206,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081206
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081207,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081207
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081208,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081208
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081209,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081209
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081210,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081210
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081211,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081211
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081212,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081212
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081213,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081213
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.TriggerBlendShapesEmotion",
@@ -141,54 +155,68 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 204
+                "fixedValue": {
+                  "Value": 204.00000004749745
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
           },
-          "EmotionName": "Sad01"
+          "EmotionName": "Sad01",
+          "TransitTime": 0.2,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081214,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081214
             },
             {
-              "TextSpeed": 0,
-              "TalkSentenceID": 503081215,
-              "ProtectTime": 0
+              "TalkSentenceID": 503081215
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.PlayFullScreenTransfer"
+          "$type": "RPG.GameCore.PlayFullScreenTransfer",
+          "Type": "Black",
+          "PrevDuration": 0.5,
+          "KeepDuration": 0.5,
+          "PostDuration": 0.5,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndDialogueEntityInteract"
+          "$type": "RPG.GameCore.EndDialogueEntityInteract",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

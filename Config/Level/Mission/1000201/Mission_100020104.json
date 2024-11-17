@@ -10,31 +10,19 @@
             "FetchType": "SinglePropByPropID",
             "SinglePropID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 4
+                "fixedValue": {
+                  "Value": 4.000000000931323
                 }
               },
               "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300012
+                "fixedValue": {
+                  "Value": 300012.000069852
                 }
               }
             }
           },
-          "TargetGroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
-          "TargetID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
+          "TargetGroupID": {},
+          "TargetID": {},
           "TargetTypes": [],
           "ColliderRelativePath": "Trigger",
           "DestroyAfterTriggered": true,
@@ -43,19 +31,26 @@
               "$type": "RPG.GameCore.PlayMissionTalk",
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 100020235,
                   "ProtectTime": 5,
                   "ForceToNextTime": 5
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "100020104_MissionTalk"
-              }
+              },
+              "TaskEnabled": true
             }
-          ]
+          ],
+          "SkipFakeAvatar": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -65,33 +60,40 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "100020104_MissionTalk"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 25
+            "fixedValue": {
+              "Value": 25.000000005820766
             }
-          }
+          },
+          "MaxAdvencePerTick": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayMissionTalk",
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 100020237,
               "ProtectTime": 5,
               "ForceToNextTime": 5
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.ChangePropState"
+          "$type": "RPG.GameCore.ChangePropState",
+          "TaskEnabled": true
         }
       ]
     }

@@ -1,19 +1,28 @@
 {
+  "GroupConfigName": "Default",
   "ConfigEntityPath": "Config/ConfigEntity/SummonUnit/SummonUnit_Common_TeamField_Entity.json",
+  "TickLodTemplateName": "DefaultStaticEntity",
   "ResidentEffects": [],
+  "ShoesType": "boot",
   "AttachPoint": "Origin",
+  "Duration": {
+    "fixedValue": {
+      "Value": -1.0000000002328306
+    }
+  },
   "OnCreate": [],
   "OnDestroy": [],
   "TriggerConfig": {
     "CustomTriggers": [
       {
         "TriggerName": "AcheronNpcMonsterTrigger",
+        "DefaultEnable": true,
         "Radius": {
-          "IsDynamic": false,
-          "FixedValue": {
-            "Value": 20
+          "fixedValue": {
+            "Value": 20.000000004656613
           }
         },
+        "RayStartOffsetY": 1,
         "ForceSyncTargetToSever": true,
         "TargetTypes": [
           "NPCMonster"
@@ -27,7 +36,9 @@
               "TargetType": {
                 "$type": "RPG.GameCore.TargetAlias",
                 "Alias": "TaskActionTarget"
-              }
+              },
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             "SuccessTaskList": [
               {
@@ -36,9 +47,12 @@
                   "$type": "RPG.GameCore.TargetAlias",
                   "Alias": "TaskActionTarget"
                 },
-                "ID": 130802
+                "ID": 130802,
+                "TaskEnabled": true,
+                "IsClientOnly": true
               }
-            ]
+            ],
+            "TaskEnabled": true
           }
         ],
         "OnTriggerExit": [
@@ -50,13 +64,15 @@
             },
             "ID": 130802,
             "LifeTime": {
-              "IsDynamic": false,
-              "FixedValue": {
-                "Value": 0.5
+              "fixedValue": {
+                "Value": 0.5000000005820766
               }
-            }
+            },
+            "TaskEnabled": true,
+            "IsClientOnly": true
           }
-        ]
+        ],
+        "SkipFakeAvatar": true
       }
     ]
   }

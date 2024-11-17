@@ -1,5 +1,4 @@
 {
-  "$type": "RPG.GameCore.RtLevelGroupInfo",
   "GroupName": "IceBear",
   "Category": "Atmosphere",
   "AreaAnchorName": "LevelArea_P20101_F20101001_G85",
@@ -7,26 +6,20 @@
   "AtmosphereCondition": {
     "Conditions": [
       {
-        "$type": "RPG.GameCore.LevelGroupAtmosphereSavedValueCondition",
         "SavedValueName": "IceBear",
+        "Operation": "Equal",
         "Value": 1
       }
-    ]
+    ],
+    "Operation": "And"
   },
   "LoadOnInitial": true,
   "ValueSource": {},
   "ConflictIDList": [],
   "IsHoyoGroup": true,
   "HoYoGroupType": "Container",
+  "StreamingTemplateType": "Standard",
   "ConflictWhiteList": [],
-  "TagContainer": {
-    "List": [
-      {
-        "Tag": "Group.Atomsphere.NPC",
-        "TagHash": -882113524
-      }
-    ]
-  },
   "AnchorList": [],
   "MonsterList": [],
   "PropList": [],
@@ -37,9 +30,12 @@
   "NPCList": [
     {
       "NPCID": 3020,
+      "LoadOnInitial": true,
       "ValueSource": {},
+      "DialogueTriggerAngle": 120,
       "DialogueGroups": [],
       "ServerInteractVerificationIDList": [],
+      "DefaultLookAtMode": "LookPlayer",
       "BoardShowList": [
         1,
         8,
@@ -48,9 +44,14 @@
       "OverrideNPCName": {
         "Hash": 321168433
       },
+      "OverrideNPCTitle": {
+        "Hash": 371857150
+      },
       "TalkDialogGroupIDList": [],
+      "DefaultAnimationType": "FreeStyle",
       "DefaultIdleFreeStyleMotionID": 900060012,
       "OverrideSeriesID": 3020,
+      "BornType": "Mission",
       "InitialHiddenNodeList": [],
       "Dialog": {
         "LevelGraph": "Config/Level/NPCDialogue/P20101/F20101001_G85/DialogueMain_F20101001_G85_N400001.json",
@@ -59,16 +60,28 @@
             "Name": "Common",
             "LevelGraph": "Config/Level/NPCDialogue/P20101/F20101001_G85/DialoguePack_Common_F20101001_G85_N400001.json"
           }
-        ]
+        ],
+        "EnableDialogCamera": true
       },
+      "InteractIconType": "ChatIcon",
+      "DialogueTriggerSkipFakeAvatar": true,
       "DialogueTriggerSkipSpecifiedFakeAvatarList": [],
       "OverrideReplaceMaterialKeyList": [],
       "CameraCenterEntityList": [],
       "SpawnConfig": {
+        "TryCapture": true,
         "CaptureDistanceTolerance": 10,
-        "EntitySpawnConfig": {}
+        "EntitySpawnConfig": {
+          "NeedBlackIn": true,
+          "BlackInDistance": 25,
+          "NeedFadeIn": true,
+          "NeedFadeOut": true
+        }
       },
-      "TriggerValidGuest": {},
+      "TriggerValidGuest": {
+        "LocalPlayer": true,
+        "Teammember": true
+      },
       "Name": "NPC1",
       "RotY": 126.2297,
       "ID": 400001,

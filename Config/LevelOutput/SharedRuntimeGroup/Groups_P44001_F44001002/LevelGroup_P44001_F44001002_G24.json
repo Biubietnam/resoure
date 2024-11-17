@@ -1,14 +1,15 @@
 {
-  "$type": "RPG.GameCore.RtLevelGroupInfo",
   "GroupName": "MainMission4070012_New Group",
   "Category": "Mission",
   "LevelGraph": "Config/Level/GroupGraph/F44001002/Group_F44001002_G24.json",
   "AreaAnchorName": "LevelArea_P44001_F44001002_G24",
+  "SaveType": "Permanent",
   "LoadSide": "Server",
   "OwnerMainMissionID": 4070012,
   "ValueSource": {},
   "ConflictIDList": [],
   "IsHoyoGroup": true,
+  "StreamingTemplateType": "Standard",
   "ConflictWhiteList": [],
   "AnchorList": [],
   "MonsterList": [
@@ -18,6 +19,7 @@
         "PathwayList": [],
         "SlaveConfigList": []
       },
+      "LoadOnInitial": true,
       "ValueSource": {},
       "CampID": 3,
       "BattleArea": {
@@ -28,7 +30,15 @@
       "BoardShowList": [
         2
       ],
+      "DefaultLookAtMode": "LookPlayer",
       "TagList": [],
+      "OverrideNPCName": {
+        "Hash": 371857150
+      },
+      "OverrideNPCTitle": {
+        "Hash": 371857150
+      },
+      "InteractIconType": "ChatIcon",
       "Name": "Monster1",
       "RotY": 7.704309,
       "ID": 200001,
@@ -45,28 +55,50 @@
   "NPCList": [
     {
       "NPCID": 3015,
+      "LoadOnInitial": true,
       "ValueSource": {
         "Values": [
           {
-            "$type": "RPG.GameCore.SharedString",
+            "Key": "Portal"
+          }
+        ],
+        "SharedValues": [
+          {
             "Key": "Portal"
           }
         ]
       },
+      "DialogueTriggerAngle": 120,
       "DialogueGroups": [],
       "ServerInteractVerificationIDList": [],
-      "DefaultLookAtMode": "Closed",
       "BoardShowList": [
         8
       ],
-      "TalkDialogGroupIDList": [],
-      "DefaultAnimationType": "IdleState",
-      "InitialHiddenNodeList": [],
-      "SpawnConfig": {
-        "CaptureDistanceTolerance": 10,
-        "EntitySpawnConfig": {}
+      "OverrideNPCName": {
+        "Hash": 371857150
       },
-      "TriggerValidGuest": {},
+      "OverrideNPCTitle": {
+        "Hash": 371857150
+      },
+      "TalkDialogGroupIDList": [],
+      "BornType": "Mission",
+      "InitialHiddenNodeList": [],
+      "InteractIconType": "ChatIcon",
+      "DialogueTriggerSkipFakeAvatar": true,
+      "SpawnConfig": {
+        "TryCapture": true,
+        "CaptureDistanceTolerance": 10,
+        "EntitySpawnConfig": {
+          "NeedBlackIn": true,
+          "BlackInDistance": 25,
+          "NeedFadeIn": true,
+          "NeedFadeOut": true
+        }
+      },
+      "TriggerValidGuest": {
+        "LocalPlayer": true,
+        "Teammember": true
+      },
       "Name": "NPC1",
       "RotY": 269.7551,
       "ID": 400001,
@@ -83,22 +115,41 @@
         {
           "PointList": [
             {
-              "RestartMode": "RestartFromSO"
+              "RootTask": {
+                "Tasks": [
+                  {
+                    "MoveStance": "Run",
+                    "StartRunDistance": 10,
+                    "StartSprintDistance": 8,
+                    "FreeScaleDistance": 6,
+                    "ScaleInterval": 0.1,
+                    "TransitionTime": 0.25,
+                    "PlayerSpeedRatio": 1,
+                    "ScaleStep": 0.3,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "StoryMotionID": 900030243,
+                    "ForceStart": true,
+                    "NormalizedTransitionDuration": 0.05,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  }
+                ],
+                "WaitMessages": [],
+                "TaskEnabled": true,
+                "IsClientOnly": true
+              }
             }
           ]
         }
       ],
-      "CommonPointList": [
-        {
-          "PosX": -1.0629884E+34
-        },
-        {
-          "PosX": 10,
-          "PosY": 8
-        },
-        {},
-        {}
-      ],
+      "CommonPointList": [],
       "Name": "SmartObject1",
       "RotY": 1.042115,
       "ID": 1,

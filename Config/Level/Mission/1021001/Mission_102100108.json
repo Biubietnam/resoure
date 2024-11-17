@@ -6,18 +6,18 @@
         {
           "$type": "RPG.GameCore.CreateProp",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 51
+            "fixedValue": {
+              "Value": 51.00000001187436
             }
           },
           "GroupPropID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 300001
+            "fixedValue": {
+              "Value": 300001.0000698494
             }
           },
-          "CreateList": []
+          "CreateList": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -26,18 +26,18 @@
         {
           "$type": "RPG.GameCore.CreateNPC",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 51
+            "fixedValue": {
+              "Value": 51.00000001187436
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
           },
-          "CreateList": []
+          "CreateList": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -50,20 +50,20 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 51
+                "fixedValue": {
+                  "Value": 51.00000001187436
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
           },
-          "UsageType": "TaskFollow"
+          "UsageType": "TaskFollow",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SetNpcStatus",
@@ -72,20 +72,20 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 51
+                "fixedValue": {
+                  "Value": 51.00000001187436
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
           },
-          "Status": "FollowByPlayer"
+          "Status": "FollowByPlayer",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -94,20 +94,21 @@
         {
           "$type": "RPG.GameCore.CaptureNPCToCharacter",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 51
+            "fixedValue": {
+              "Value": 51.00000001187436
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
           },
           "CharacterUniqueName": {
             "Value": "102100108_Fuxuan"
-          }
+          },
+          "ReleaseIfPerformanceEnd": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -120,18 +121,25 @@
           "$type": "RPG.GameCore.NpcToPlayerDistanceTrigger",
           "GroupID": 51,
           "GroupNpcID": 400001,
+          "NearDistance": -1,
           "FarDistance": 20,
           "FarTask": [
             {
               "$type": "RPG.GameCore.PlayMissionTalk",
               "SimpleTalkList": [
                 {
+                  "TextSpeed": 20,
                   "TalkSentenceID": 202221008,
                   "ProtectTime": 2
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "AwakeWaitTime": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -144,45 +152,40 @@
             "FetchType": "SinglePropByPropID",
             "SinglePropID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 51
+                "fixedValue": {
+                  "Value": 51.00000001187436
                 }
               },
               "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300001
+                "fixedValue": {
+                  "Value": 300001.0000698494
                 }
               }
             }
           },
-          "TargetGroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
-          "TargetID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
+          "TargetGroupID": {},
+          "TargetID": {},
           "TargetTypes": [],
           "DestroyAfterTriggered": true,
           "OnTriggerEnter": [
             {
               "$type": "RPG.GameCore.ClearNpcDistanceTrigger",
               "GroupID": 51,
-              "GroupNpcID": 400001
+              "GroupNpcID": 400001,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.FinishPerformanceMission",
-              "Key": "Mission_102100108"
+              "Key": "Mission_102100108",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ],
-          "BlockDialogueInRange": true
+          "BlockDialogueInRange": true,
+          "SkipFakeAvatar": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

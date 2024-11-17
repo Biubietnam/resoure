@@ -1,23 +1,22 @@
 {
-  "$type": "RPG.GameCore.RtLevelGroupInfo",
   "GroupName": "MainMission4070011_LeaveMiracleRoom",
   "Category": "Mission",
   "LevelGraph": "Config/Level/GroupGraph/F44001001/Group_F44001001_G33.json",
   "AreaAnchorName": "LevelArea_P44001_F44001001_G33",
+  "SaveType": "Permanent",
   "LoadSide": "Server",
   "OwnerMainMissionID": 4070011,
   "ValueSource": {},
   "ConflictIDList": [],
   "IsHoyoGroup": true,
+  "StreamingTemplateType": "Standard",
   "ConflictWhiteList": [],
   "AnchorList": [
     {
       "RotX": 20.88796,
-      "RotZ": -1E-06,
+      "RotZ": -0.000001,
       "Usage": "Camera",
-      "CustomParameter": {
-        "$type": "RPG.GameCore.LevelAnchorCameraParameter"
-      },
+      "CustomParameter": {},
       "Name": "Anchor1",
       "RotY": 319.8791,
       "ID": 1,
@@ -45,6 +44,27 @@
   "PropList": [],
   "DistrictList": [
     {
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1,
+        "normalized": {
+          "x": 0.577350259,
+          "y": 0.577350259,
+          "z": 0.577350259,
+          "normalized": {
+            "x": 0.5773503,
+            "y": 0.5773503,
+            "z": 0.5773503,
+            "magnitude": 1.00000012,
+            "sqrMagnitude": 1.00000024
+          },
+          "magnitude": 0.99999994,
+          "sqrMagnitude": 0.99999994
+        },
+        "magnitude": 1.73205078,
+        "sqrMagnitude": 3
+      },
       "Trigger": {
         "Shape": "GeometryBox",
         "Radius": 1,
@@ -53,7 +73,9 @@
         "DimZ": 6.75,
         "PointList": []
       },
+      "LoadOnInitial": true,
       "DistrictType": "Level",
+      "NPCCrowdRadius": 25,
       "ValueSource": {},
       "Name": "District1",
       "RotY": 19.1787,
@@ -63,6 +85,27 @@
       "PosZ": -103.81
     },
     {
+      "Scale": {
+        "x": 1,
+        "y": 1,
+        "z": 1,
+        "normalized": {
+          "x": 0.577350259,
+          "y": 0.577350259,
+          "z": 0.577350259,
+          "normalized": {
+            "x": 0.5773503,
+            "y": 0.5773503,
+            "z": 0.5773503,
+            "magnitude": 1.00000012,
+            "sqrMagnitude": 1.00000024
+          },
+          "magnitude": 0.99999994,
+          "sqrMagnitude": 0.99999994
+        },
+        "magnitude": 1.73205078,
+        "sqrMagnitude": 3
+      },
       "Trigger": {
         "Shape": "Box",
         "Radius": 1,
@@ -71,6 +114,8 @@
         "DimZ": 5.77,
         "PointList": []
       },
+      "LoadOnInitial": true,
+      "NPCCrowdRadius": 25,
       "ValueSource": {},
       "Name": "District2",
       "RotY": 19.1787,
@@ -86,30 +131,53 @@
   "NPCList": [
     {
       "NPCID": 3015,
+      "LoadOnInitial": true,
       "ValueSource": {
         "Values": [
           {
-            "$type": "RPG.GameCore.SharedString",
+            "Value": "LevelArea_P44001_F44001001_G22,TransferPeiPei",
+            "Key": "Anchor"
+          }
+        ],
+        "SharedValues": [
+          {
             "Value": "LevelArea_P44001_F44001001_G22,TransferPeiPei",
             "Key": "Anchor"
           }
         ]
       },
       "CampID": 2,
+      "DialogueTriggerAngle": 120,
       "DialogueGroups": [],
       "ServerInteractVerificationIDList": [],
-      "DefaultLookAtMode": "Closed",
       "BoardShowList": [
         8
       ],
-      "TalkDialogGroupIDList": [],
-      "DefaultAnimationType": "IdleState",
-      "InitialHiddenNodeList": [],
-      "SpawnConfig": {
-        "CaptureDistanceTolerance": 10,
-        "EntitySpawnConfig": {}
+      "OverrideNPCName": {
+        "Hash": 371857150
       },
-      "TriggerValidGuest": {},
+      "OverrideNPCTitle": {
+        "Hash": 371857150
+      },
+      "TalkDialogGroupIDList": [],
+      "BornType": "Mission",
+      "InitialHiddenNodeList": [],
+      "InteractIconType": "ChatIcon",
+      "DialogueTriggerSkipFakeAvatar": true,
+      "SpawnConfig": {
+        "TryCapture": true,
+        "CaptureDistanceTolerance": 10,
+        "EntitySpawnConfig": {
+          "NeedBlackIn": true,
+          "BlackInDistance": 25,
+          "NeedFadeIn": true,
+          "NeedFadeOut": true
+        }
+      },
+      "TriggerValidGuest": {
+        "LocalPlayer": true,
+        "Teammember": true
+      },
       "Name": "NPC1",
       "RotY": 167.9004,
       "ID": 400001,
@@ -126,24 +194,41 @@
         {
           "PointList": [
             {
-              "RestartMode": "RestartFromSO"
+              "RootTask": {
+                "Tasks": [
+                  {
+                    "MoveStance": "FastRun",
+                    "StartRunDistance": 10,
+                    "StartSprintDistance": 8,
+                    "FreeScaleDistance": 6,
+                    "ScaleInterval": 0.1,
+                    "TransitionTime": 0.25,
+                    "PlayerSpeedRatio": 3,
+                    "ScaleStep": 0.3,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "StoryMotionID": 900030243,
+                    "ForceStart": true,
+                    "NormalizedTransitionDuration": 0.05,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  }
+                ],
+                "WaitMessages": [],
+                "TaskEnabled": true,
+                "IsClientOnly": true
+              }
             }
           ]
         }
       ],
-      "CommonPointList": [
-        {
-          "PosX": -2.7212503E+36
-        },
-        {
-          "PosX": 1.084203E-19,
-          "PosY": 9.1E-44
-        },
-        {
-          "ID": 0
-        },
-        {}
-      ],
+      "CommonPointList": [],
       "Name": "SmartObject1",
       "RotY": 18.28686,
       "ID": 1,
@@ -152,8 +237,98 @@
       "PosZ": -103.728
     },
     {
-      "RotY": 0.1
+      "SlotList": [
+        {
+          "PointList": [
+            {
+              "RootTask": {
+                "Tasks": [
+                  {
+                    "MoveStance": "FastRun",
+                    "StartRunDistance": 10,
+                    "StartSprintDistance": 8,
+                    "FreeScaleDistance": 6,
+                    "ScaleInterval": 0.1,
+                    "TransitionTime": 0.25,
+                    "PlayerSpeedRatio": 3,
+                    "ScaleStep": 0.3,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "StoryMotionID": 900030250,
+                    "ForceStart": true,
+                    "NormalizedTransitionDuration": 0.05,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  }
+                ],
+                "WaitMessages": [],
+                "TaskEnabled": true,
+                "IsClientOnly": true
+              }
+            }
+          ]
+        }
+      ],
+      "CommonPointList": [],
+      "Name": "SmartObject2",
+      "RotY": 18.28686,
+      "ID": 2,
+      "PosX": -17.19,
+      "PosY": 1.039495,
+      "PosZ": -95.49
     },
-    {}
+    {
+      "SlotList": [
+        {
+          "PointList": [
+            {
+              "RootTask": {
+                "Tasks": [
+                  {
+                    "MoveStance": "FastRun",
+                    "StartRunDistance": 10,
+                    "StartSprintDistance": 8,
+                    "FreeScaleDistance": 6,
+                    "ScaleInterval": 0.1,
+                    "TransitionTime": 0.25,
+                    "PlayerSpeedRatio": 3,
+                    "ScaleStep": 0.3,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  },
+                  {
+                    "StoryMotionID": 900030250,
+                    "ForceStart": true,
+                    "NormalizedTransitionDuration": 0.05,
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
+                  }
+                ],
+                "WaitMessages": [],
+                "TaskEnabled": true,
+                "IsClientOnly": true
+              }
+            }
+          ]
+        }
+      ],
+      "CommonPointList": [],
+      "Name": "SmartObject3",
+      "RotY": 18.28686,
+      "ID": 3,
+      "PosX": -14.56,
+      "PosY": 1.039495,
+      "PosZ": -80.09
+    }
   ]
 }

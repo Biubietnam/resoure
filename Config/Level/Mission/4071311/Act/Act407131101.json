@@ -4,10 +4,14 @@
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -18,102 +22,129 @@
           "PerformanceType": "E",
           "CreateCharacterList": [],
           "EntityVisiableList": [],
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
-          "HideMunicipalOther": false,
+          "HideMonster": true,
           "PropVisiableList": [],
-          "UseNewStreamingSourceType": false,
-          "MarkStreamingItems": []
+          "MarkStreamingItems": [],
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.EnableNPCMonsterAI",
           "Enable": true,
           "GroupMonsterIDs": [],
-          "UniqueNames": []
+          "UniqueNames": [],
+          "AbortSkillWhenDisable": true,
+          "ResetStateOnDisable": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CaptureNPCToCharacter",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
           },
           "CharacterUniqueName": {
             "Value": "Robot_1"
           },
+          "ReleaseIfPerformanceEnd": true,
           "TargetType": {
             "$type": "RPG.GameCore.TargetFetchAdvNpcEx",
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 1
+                "fixedValue": {
+                  "Value": 1.0000000002328306
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400001
+                "fixedValue": {
+                  "Value": 400001.0000931325
                 }
               }
             }
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerAnimState",
           "CharacterUniqueName": {
             "Value": "Robot_1"
           },
+          "ForceStart": true,
           "AnimStateName": "Maze_Idle_01",
-          "NormalizedTransitionDuration": 0.25
+          "NormalizedTransitionDuration": 0.25,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlaySimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
-              "TalkSentenceID": 407131101
+              "TextSpeed": 20,
+              "TalkSentenceID": 407131101,
+              "ProtectTime": 0.8
             },
             {
-              "TalkSentenceID": 407131102
+              "TextSpeed": 20,
+              "TalkSentenceID": 407131102,
+              "ProtectTime": 0.8
             },
             {
-              "TalkSentenceID": 407131103
+              "TextSpeed": 20,
+              "TalkSentenceID": 407131103,
+              "ProtectTime": 0.8
             },
             {
-              "TalkSentenceID": 407131104
+              "TextSpeed": 20,
+              "TalkSentenceID": 407131104,
+              "ProtectTime": 0.8
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.WaitSimpleTalkFinish"
+          "$type": "RPG.GameCore.WaitSimpleTalkFinish",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerAnimState",
           "CharacterUniqueName": {
             "Value": "Robot_1"
           },
+          "ForceStart": true,
           "AnimStateName": "Maze_Idle_01",
-          "NormalizedTransitionDuration": 0.25
+          "NormalizedTransitionDuration": 0.25,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
-          }
+          },
+          "MaxAdvencePerTick": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

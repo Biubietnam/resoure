@@ -1,12 +1,44 @@
 {
   "GroupConfigName": "StaticUnit",
   "ConfigEntityPath": "Config/ConfigEntity/SummonUnit/SummonUnit_Dr_Ratio_00_MazeSkill_Entity.json",
+  "TickLodTemplateName": "DefaultStaticEntity",
   "ResidentEffects": [
     {
-      "$type": "RPG.GameCore.TriggerEffect",
-      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Dr_Ratio_00/Eff_Avatar_Dr_Ratio_00_MazeSkill_Appear01.prefab"
+      "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Dr_Ratio_00/Eff_Avatar_Dr_Ratio_00_MazeSkill_Appear01.prefab",
+      "Scale": {
+        "x": -1,
+        "y": -1,
+        "z": -1,
+        "normalized": {
+          "x": -0.577350259,
+          "y": -0.577350259,
+          "z": -0.577350259,
+          "normalized": {
+            "x": -0.5773503,
+            "y": -0.5773503,
+            "z": -0.5773503,
+            "magnitude": 1.00000012,
+            "sqrMagnitude": 1.00000024
+          },
+          "magnitude": 0.99999994,
+          "sqrMagnitude": 0.99999994
+        },
+        "magnitude": 1.73205078,
+        "sqrMagnitude": 3
+      },
+      "ParamEntityUsage": "LookAt",
+      "TowardMaxPitchAngle": 90,
+      "MaxMutexCount": 1,
+      "TaskEnabled": true,
+      "IsClientOnly": true
     }
   ],
+  "ShoesType": "boot",
+  "Duration": {
+    "fixedValue": {
+      "Value": -1.0000000002328306
+    }
+  },
   "OnCreate": [
     {
       "$type": "RPG.GameCore.AdvMarkAsTauntProxy",
@@ -17,7 +49,9 @@
       "ProxyTargetType": {
         "$type": "RPG.GameCore.TargetAlias",
         "Alias": "Caster"
-      }
+      },
+      "TaskEnabled": true,
+      "IsClientOnly": true
     }
   ],
   "OnDestroy": [],
@@ -25,14 +59,15 @@
     "CustomTriggers": [
       {
         "TriggerName": "HitNpcMonsterTrigger",
+        "DefaultEnable": true,
         "Radius": {
-          "IsDynamic": false,
-          "FixedValue": {
-            "Value": 6
+          "fixedValue": {
+            "Value": 6.000000001396984
           }
         },
         "UseVerticalBound": true,
         "NeedRaycast": true,
+        "RayStartOffsetY": 1,
         "TargetTypes": [
           "NPCMonster"
         ],
@@ -44,7 +79,9 @@
               "$type": "RPG.GameCore.TargetAlias",
               "Alias": "TaskActionTarget"
             },
-            "ID": 130501
+            "ID": 130501,
+            "TaskEnabled": true,
+            "IsClientOnly": true
           }
         ],
         "OnTriggerExit": [
@@ -54,9 +91,12 @@
               "$type": "RPG.GameCore.TargetAlias",
               "Alias": "TaskActionTarget"
             },
-            "ID": 130501
+            "ID": 130501,
+            "TaskEnabled": true,
+            "IsClientOnly": true
           }
-        ]
+        ],
+        "SkipFakeAvatar": true
       }
     ]
   },
@@ -68,13 +108,34 @@
           "$type": "RPG.GameCore.TargetAlias",
           "Alias": "Caster"
         },
-        "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Dr_Ratio_00/Eff_Avatar_Dr_Ratio_00_MazeSkill_Hit.prefab"
+        "EffectPath": "Effects/Eff_Prefab/Eff_Avatar/Eff_Dr_Ratio_00/Eff_Avatar_Dr_Ratio_00_MazeSkill_Hit.prefab",
+        "Scale": {
+          "x": -1,
+          "y": -1,
+          "z": -1,
+          "normalized": {
+            "x": -0.577350259,
+            "y": -0.577350259,
+            "z": -0.577350259,
+            "normalized": {
+              "x": -0.5773503,
+              "y": -0.5773503,
+              "z": -0.5773503,
+              "magnitude": 1.00000012,
+              "sqrMagnitude": 1.00000024
+            },
+            "magnitude": 0.99999994,
+            "sqrMagnitude": 0.99999994
+          },
+          "magnitude": 1.73205078,
+          "sqrMagnitude": 3
+        },
+        "ParamEntityUsage": "LookAt",
+        "TowardMaxPitchAngle": 90,
+        "MaxMutexCount": 1,
+        "TaskEnabled": true,
+        "IsClientOnly": true
       }
     ]
-  },
-  "DynamicValues": {
-    "Values": {
-      "1930809102": {}
-    }
   }
 }

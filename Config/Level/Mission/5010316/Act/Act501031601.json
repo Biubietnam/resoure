@@ -9,111 +9,155 @@
           "CreateCharacterList": [],
           "CaptureNPCList": [],
           "EntityVisiableList": [],
-          "HideMunicipalCrowd": false,
-          "HideMunicipalPedestrian": false,
+          "HideMunicipalOther": true,
+          "HideMonster": true,
           "PropVisiableList": [],
-          "UseNewStreamingSourceType": false,
           "StreamingSourcesInBlackMask": [],
           "StreamingSourcesAfterBlackMask": [],
-          "MarkStreamingItems": []
+          "MarkStreamingItems": [],
+          "ResetEnvironment": true,
+          "ResetMonster": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.AdvNpcFaceToPlayer",
-          "TryFaceToFace": false,
-          "OnlyPlayerFaceToNpc": true
+          "FromDialog": true,
+          "OnlyPlayerFaceToNpc": true,
+          "NpcLookAtPlayer": true,
+          "PlayerLookAtNpc": true,
+          "StopLookAtOnGraphEnd": true,
+          "TurnBackOnGraphEnd": true,
+          "WaitFinishMode": "WaitFaceAngle",
+          "ForceToStandBy": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CaptureNPCToCharacter",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 85
+            "fixedValue": {
+              "Value": 85.0000000197906
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
           },
           "CharacterUniqueName": {
             "Value": "5010316_IceBear"
-          }
+          },
+          "ReleaseIfPerformanceEnd": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031601,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
           "CharacterUniqueName": "5010316_IceBear",
+          "ForceStart": true,
           "StoryAvatarID": "NPC_Special_IceBear_00",
-          "StoryMotionID": 900060205
+          "NormalizedTransitionDuration": 0.05,
+          "StoryMotionID": 900060205,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031602,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031603,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031604,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031605,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031606,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031607,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayScreenTransfer",
+          "Type": "Black",
           "Mode": "FullTransfer",
           "TransferFullDuration": {
-            "KeepDuration": 3
+            "PrevDuration": 0.5,
+            "KeepDuration": 3,
+            "PostDuration": 0.5
           },
           "TextEnabled": true,
           "TalkSentenceID": 501031608,
-          "NotAuto": true
+          "NotAuto": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031609,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
           "CharacterUniqueName": "5010316_IceBear",
+          "ForceStart": true,
           "StoryAvatarID": "NPC_Special_IceBear_00",
-          "StoryMotionID": 900060259
+          "NormalizedTransitionDuration": 0.05,
+          "StoryMotionID": 900060259,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PredicateTaskList",
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-            "PathType": "Warrior"
+            "PathType": "Warrior",
+            "TaskEnabled": true,
+            "IsClientOnly": true
           },
           "SuccessTaskList": [
             {
@@ -132,13 +176,16 @@
                   7
                 ]
               },
-              "CustomValue": 1
+              "CustomValue": 1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "TalkSentence501031610"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
           "FailedTaskList": [
@@ -146,7 +193,9 @@
               "$type": "RPG.GameCore.PredicateTaskList",
               "Predicate": {
                 "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                "PathType": "Rogue"
+                "PathType": "Rogue",
+                "TaskEnabled": true,
+                "IsClientOnly": true
               },
               "SuccessTaskList": [
                 {
@@ -165,13 +214,16 @@
                       7
                     ]
                   },
-                  "CustomValue": 2
+                  "CustomValue": 2,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
                   "CustomString": {
                     "Value": "TalkSentence501031610"
-                  }
+                  },
+                  "TaskEnabled": true
                 }
               ],
               "FailedTaskList": [
@@ -179,7 +231,9 @@
                   "$type": "RPG.GameCore.PredicateTaskList",
                   "Predicate": {
                     "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                    "PathType": "Mage"
+                    "PathType": "Mage",
+                    "TaskEnabled": true,
+                    "IsClientOnly": true
                   },
                   "SuccessTaskList": [
                     {
@@ -198,13 +252,16 @@
                           7
                         ]
                       },
-                      "CustomValue": 3
+                      "CustomValue": 3,
+                      "TaskEnabled": true,
+                      "IsClientOnly": true
                     },
                     {
                       "$type": "RPG.GameCore.TriggerCustomString",
                       "CustomString": {
                         "Value": "TalkSentence501031610"
-                      }
+                      },
+                      "TaskEnabled": true
                     }
                   ],
                   "FailedTaskList": [
@@ -212,7 +269,9 @@
                       "$type": "RPG.GameCore.PredicateTaskList",
                       "Predicate": {
                         "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                        "PathType": "Knight"
+                        "PathType": "Knight",
+                        "TaskEnabled": true,
+                        "IsClientOnly": true
                       },
                       "SuccessTaskList": [
                         {
@@ -231,13 +290,16 @@
                               7
                             ]
                           },
-                          "CustomValue": 4
+                          "CustomValue": 4,
+                          "TaskEnabled": true,
+                          "IsClientOnly": true
                         },
                         {
                           "$type": "RPG.GameCore.TriggerCustomString",
                           "CustomString": {
                             "Value": "TalkSentence501031610"
-                          }
+                          },
+                          "TaskEnabled": true
                         }
                       ],
                       "FailedTaskList": [
@@ -245,7 +307,9 @@
                           "$type": "RPG.GameCore.PredicateTaskList",
                           "Predicate": {
                             "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                            "PathType": "Warlock"
+                            "PathType": "Warlock",
+                            "TaskEnabled": true,
+                            "IsClientOnly": true
                           },
                           "SuccessTaskList": [
                             {
@@ -264,13 +328,16 @@
                                   7
                                 ]
                               },
-                              "CustomValue": 5
+                              "CustomValue": 5,
+                              "TaskEnabled": true,
+                              "IsClientOnly": true
                             },
                             {
                               "$type": "RPG.GameCore.TriggerCustomString",
                               "CustomString": {
                                 "Value": "TalkSentence501031610"
-                              }
+                              },
+                              "TaskEnabled": true
                             }
                           ],
                           "FailedTaskList": [
@@ -278,7 +345,9 @@
                               "$type": "RPG.GameCore.PredicateTaskList",
                               "Predicate": {
                                 "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                                "PathType": "Shaman"
+                                "PathType": "Shaman",
+                                "TaskEnabled": true,
+                                "IsClientOnly": true
                               },
                               "SuccessTaskList": [
                                 {
@@ -297,13 +366,16 @@
                                       7
                                     ]
                                   },
-                                  "CustomValue": 6
+                                  "CustomValue": 6,
+                                  "TaskEnabled": true,
+                                  "IsClientOnly": true
                                 },
                                 {
                                   "$type": "RPG.GameCore.TriggerCustomString",
                                   "CustomString": {
                                     "Value": "TalkSentence501031610"
-                                  }
+                                  },
+                                  "TaskEnabled": true
                                 }
                               ],
                               "FailedTaskList": [
@@ -311,7 +383,9 @@
                                   "$type": "RPG.GameCore.PredicateTaskList",
                                   "Predicate": {
                                     "$type": "RPG.GameCore.ByCompareTeamLeaderPath",
-                                    "PathType": "Priest"
+                                    "PathType": "Priest",
+                                    "TaskEnabled": true,
+                                    "IsClientOnly": true
                                   },
                                   "SuccessTaskList": [
                                     {
@@ -330,13 +404,16 @@
                                           7
                                         ]
                                       },
-                                      "CustomValue": 7
+                                      "CustomValue": 7,
+                                      "TaskEnabled": true,
+                                      "IsClientOnly": true
                                     },
                                     {
                                       "$type": "RPG.GameCore.TriggerCustomString",
                                       "CustomString": {
                                         "Value": "TalkSentence501031610"
-                                      }
+                                      },
+                                      "TaskEnabled": true
                                     }
                                   ],
                                   "FailedTaskList": [
@@ -344,21 +421,29 @@
                                       "$type": "RPG.GameCore.TriggerCustomString",
                                       "CustomString": {
                                         "Value": "TalkSentence501031610"
-                                      }
+                                      },
+                                      "TaskEnabled": true
                                     }
-                                  ]
+                                  ],
+                                  "TaskEnabled": true
                                 }
-                              ]
+                              ],
+                              "TaskEnabled": true
                             }
-                          ]
+                          ],
+                          "TaskEnabled": true
                         }
-                      ]
+                      ],
+                      "TaskEnabled": true
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true
                 }
-              ]
+              ],
+              "TaskEnabled": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ]
     },
@@ -368,37 +453,50 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "TalkSentence501031610"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+          "KeepDisplay": true,
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031610,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031611,
               "ProtectTime": 0.3
             },
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 501031612,
               "ProtectTime": 0.3
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.EndPerformance"
+          "$type": "RPG.GameCore.EndPerformance",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
     {
       "TaskList": [
         {
-          "$type": "RPG.GameCore.WaitPerformanceEnd"
+          "$type": "RPG.GameCore.WaitPerformanceEnd",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.FinishLevelGraph"
+          "$type": "RPG.GameCore.FinishLevelGraph",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

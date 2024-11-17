@@ -6,26 +6,31 @@
         {
           "$type": "RPG.GameCore.CaptureNPCToCharacter",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 62
+            "fixedValue": {
+              "Value": 62.0000000144355
             }
           },
           "GroupNpcID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 400001
+            "fixedValue": {
+              "Value": 400001.0000931325
             }
           },
           "CharacterUniqueName": {
             "Value": "PamMission_PamTut1"
-          }
+          },
+          "ReleaseIfPerformanceEnd": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
           "CharacterUniqueName": "PamMission_PamTut1",
+          "ForceStart": true,
           "StoryAvatarID": "NPC_Special_Pam_00",
-          "StoryMotionID": 900010217
+          "NormalizedTransitionDuration": 0.05,
+          "StoryMotionID": 900010217,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -34,18 +39,18 @@
         {
           "$type": "RPG.GameCore.CreateProp",
           "GroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 100
+            "fixedValue": {
+              "Value": 100.00000002328306
             }
           },
           "GroupPropID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 300001
+            "fixedValue": {
+              "Value": 300001.0000698494
             }
           },
-          "CreateList": []
+          "CreateList": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -53,11 +58,15 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.WaitUIControllerClose",
-          "UIControllerName": "PhoneNoticePage"
+          "UIControllerName": "PhoneNoticePage",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitUIControllerClose",
-          "UIControllerName": "MobilePhonePage"
+          "UIControllerName": "MobilePhonePage",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PropSetupTrigger",
@@ -66,31 +75,19 @@
             "FetchType": "SinglePropByPropID",
             "SinglePropID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 100
+                "fixedValue": {
+                  "Value": 100.00000002328306
                 }
               },
               "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300001
+                "fixedValue": {
+                  "Value": 300001.0000698494
                 }
               }
             }
           },
-          "TargetGroupID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
-          "TargetID": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          },
+          "TargetGroupID": {},
+          "TargetID": {},
           "TargetTypes": [],
           "DestroyAfterTriggered": true,
           "OnTriggerEnter": [
@@ -98,9 +95,13 @@
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "PropTriggered_405000502"
-              }
+              },
+              "TaskEnabled": true
             }
-          ]
+          ],
+          "SkipFakeAvatar": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -111,17 +112,25 @@
           "CustomString": {
             "Value": "PropTriggered_405000502"
           },
-          "GoNextImmediately": true
+          "GoNextImmediately": true,
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SetCharacterVisible",
-          "CharacterUniqueName": "PamMission_PamTut1"
+          "CharacterUniqueName": "PamMission_PamTut1",
+          "MuteColliderWhenInvisible": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.CharacterTriggerFreeStyle",
           "CharacterUniqueName": "PamMission_PamTut1",
+          "ForceStart": true,
           "StoryAvatarID": "NPC_Special_Pam_00",
-          "StoryMotionID": 900010219
+          "NormalizedTransitionDuration": 0.05,
+          "StoryMotionID": 900010219,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SwitchCharacterAnchor",
@@ -131,17 +140,25 @@
           },
           "AnchorName": {
             "Value": "Anchor2"
-          }
+          },
+          "ResetAnimation": true,
+          "ResetCamera": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.TriggerPerformance",
           "ValueSource": {},
           "PerformanceType": "C",
-          "PerformanceID": 405000502
+          "PerformanceID": 405000502,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_405000502"
+          "Key": "Mission_405000502",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

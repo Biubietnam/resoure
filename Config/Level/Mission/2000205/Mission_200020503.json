@@ -5,11 +5,16 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.ShowFuncBtn",
+          "Show": true,
+          "HideWhenGraphFinish": true,
           "PuzzleFunc": "Identify",
           "CDDuration": 1,
+          "ShowBtnFucHint": true,
           "CustomString": {
             "Value": "PhotoGraphGOGOGO"
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -20,12 +25,17 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PhotoGraphGOGOGO"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SwitchPhotoGraphMode",
           "PhotoGraphMode": "Identify",
-          "SkipPhotoPreviewDialog": true
+          "ExitWhenPreViewDialogFinish": true,
+          "SkipPhotoPreviewDialog": true,
+          "InitFov": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -46,7 +56,9 @@
               }
             ]
           },
-          "IsAim": true
+          "IsAim": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -66,7 +78,9 @@
           "OnIdentifyFinish": [
             {
               "$type": "RPG.GameCore.SwitchPhotoGraphMode",
-              "TaskEnabled": false
+              "ExitWhenPreViewDialogFinish": true,
+              "InitFov": -1,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.ToastPile",
@@ -74,16 +88,19 @@
               "DescTextID": {
                 "Hash": 514963252
               },
-              "TaskEnabled": false
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "200020503_Success"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
-          "OnPreviewFinish": []
+          "OnPreviewFinish": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphAimTarget",
@@ -100,13 +117,16 @@
               }
             ]
           },
-          "AimIdentifyType": "Manual"
+          "AimIdentifyType": "Manual",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.TriggerCustomString",
           "CustomString": {
             "Value": "200020503_Marked"
-          }
+          },
+          "TaskEnabled": true
         }
       ]
     },
@@ -126,7 +146,9 @@
           "OnIdentifyFinish": [
             {
               "$type": "RPG.GameCore.SwitchPhotoGraphMode",
-              "TaskEnabled": false
+              "ExitWhenPreViewDialogFinish": true,
+              "InitFov": -1,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.ToastPile",
@@ -134,16 +156,19 @@
               "DescTextID": {
                 "Hash": 514963253
               },
-              "TaskEnabled": false
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "200020503_Fail"
-              }
+              },
+              "TaskEnabled": true
             }
           ],
-          "OnPreviewFinish": []
+          "OnPreviewFinish": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphAimTarget",
@@ -156,7 +181,9 @@
               }
             ]
           },
-          "AimIdentifyType": "Manual"
+          "AimIdentifyType": "Manual",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -167,7 +194,8 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "200020503_Success"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphShowIdentifyResult",
@@ -176,7 +204,9 @@
           "ToastText": {
             "Hash": 514963252
           },
-          "IsShowAim": true
+          "IsShowAim": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -187,7 +217,8 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "200020503_Fail"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphShowIdentifyResult",
@@ -195,7 +226,9 @@
           "ToastText": {
             "Hash": 514963253
           },
-          "IsShowAim": true
+          "IsShowAim": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -212,17 +245,22 @@
               }
             ]
           },
-          "IsAim": true
+          "IsAim": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "200020503_Break"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_200020503"
+          "Key": "Mission_200020503",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

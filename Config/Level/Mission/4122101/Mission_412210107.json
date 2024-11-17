@@ -10,15 +10,13 @@
             "FetchType": "SinglePropByPropID",
             "SinglePropID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 18
+                "fixedValue": {
+                  "Value": 18.00000000419095
                 }
               },
               "ID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 300002
+                "fixedValue": {
+                  "Value": 300002.00006984966
                 }
               }
             }
@@ -29,13 +27,19 @@
               "$type": "RPG.GameCore.UpdateTreasureChallengeProgress",
               "RaidTargetID": 412210101,
               "IsIncrease": true,
-              "DeltaValue": 1
+              "DeltaValue": 1,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.FinishPerformanceMission",
-              "Key": "Mission_412210107"
+              "Key": "Mission_412210107",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -46,23 +50,33 @@
           "CustomString": {
             "Value": "Mission_412210107_Photo_Took"
           },
-          "GoNextImmediately": true
+          "GoNextImmediately": true,
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.WaitSecond",
           "WaitTime": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 1
+            "fixedValue": {
+              "Value": 1.0000000002328306
             }
-          }
+          },
+          "MaxAdvencePerTick": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
-          "$type": "RPG.GameCore.LockPlayerControl"
+          "$type": "RPG.GameCore.LockPlayerControl",
+          "LockCameraControl": true,
+          "LockInteractSelect": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.ShowTalkUI",
-          "Show": true
+          "Show": true,
+          "ShowDialogControlUI": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.SelectorConfig",
@@ -74,15 +88,13 @@
                 "FetchType": "SinglePropByPropID",
                 "SinglePropID": {
                   "GroupID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 18
+                    "fixedValue": {
+                      "Value": 18.00000000419095
                     }
                   },
                   "ID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 300001
+                    "fixedValue": {
+                      "Value": 300001.0000698494
                     }
                   }
                 }
@@ -90,29 +102,45 @@
               "Execute": [
                 {
                   "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "KeepDisplay": true,
                   "Backgrounds": [],
                   "SimpleTalkList": [
                     {
-                      "TalkSentenceID": 412210151
+                      "TextSpeed": 20,
+                      "TalkSentenceID": 412210151,
+                      "ProtectTime": 0.8
                     },
                     {
-                      "TalkSentenceID": 412210155
+                      "TextSpeed": 20,
+                      "TalkSentenceID": 412210155,
+                      "ProtectTime": 0.8
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
-                  "$type": "RPG.GameCore.ShowTalkUI"
+                  "$type": "RPG.GameCore.ShowTalkUI",
+                  "ShowDialogControlUI": true,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
-                  "$type": "RPG.GameCore.UnLockPlayerControl"
+                  "$type": "RPG.GameCore.UnLockPlayerControl",
+                  "UnLockCameraControl": true,
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
                   "CustomString": {
                     "Value": "Talk_412210107"
-                  }
+                  },
+                  "TaskEnabled": true
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             },
             {
               "$type": "RPG.GameCore.PropStateExecute",
@@ -121,15 +149,13 @@
                 "FetchType": "SinglePropByPropID",
                 "SinglePropID": {
                   "GroupID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 18
+                    "fixedValue": {
+                      "Value": 18.00000000419095
                     }
                   },
                   "ID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 300001
+                    "fixedValue": {
+                      "Value": 300001.0000698494
                     }
                   }
                 }
@@ -138,39 +164,53 @@
               "Execute": [
                 {
                   "$type": "RPG.GameCore.PlayAndWaitSimpleTalk",
+                  "KeepDisplay": true,
                   "Backgrounds": [],
                   "SimpleTalkList": [
                     {
-                      "TalkSentenceID": 412210151
+                      "TextSpeed": 20,
+                      "TalkSentenceID": 412210151,
+                      "ProtectTime": 0.8
                     },
                     {
-                      "TalkSentenceID": 412210155
+                      "TextSpeed": 20,
+                      "TalkSentenceID": 412210155,
+                      "ProtectTime": 0.8
                     },
                     {
-                      "TalkSentenceID": 412210426
+                      "TextSpeed": 20,
+                      "TalkSentenceID": 412210426,
+                      "ProtectTime": 0.8
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.PlayOptionTalk",
                   "OptionList": [
                     {
-                      "$type": "RPG.GameCore.OptionTalkInfo",
                       "TalkSentenceID": 412210405,
                       "OptionIconType": "ChatContinueIcon",
                       "TriggerCustomString": "TalkSentence_412210405"
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 },
                 {
                   "$type": "RPG.GameCore.TriggerCustomString",
                   "CustomString": {
                     "Value": "Talk_412210107"
-                  }
+                  },
+                  "TaskEnabled": true
                 }
-              ]
+              ],
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ]
     },
@@ -180,17 +220,22 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "Talk_412210107"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.UpdateTreasureChallengeProgress",
           "RaidTargetID": 412210101,
           "IsIncrease": true,
-          "DeltaValue": 1
+          "DeltaValue": 1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_412210107"
+          "Key": "Mission_412210107",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

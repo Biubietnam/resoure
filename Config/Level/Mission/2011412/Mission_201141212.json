@@ -5,11 +5,16 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.ShowFuncBtn",
+          "Show": true,
+          "HideWhenGraphFinish": true,
           "PuzzleFunc": "Identify",
           "CDDuration": 1,
+          "ShowBtnFucHint": true,
           "CustomString": {
             "Value": "PhotoGraphGOGOGO"
-          }
+          },
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -20,17 +25,17 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PhotoGraphGOGOGO"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SwitchPhotoGraphMode",
           "PhotoGraphMode": "Identify",
-          "IdentifyRadiusOverride": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 0
-            }
-          }
+          "ExitWhenPreViewDialogFinish": true,
+          "IdentifyRadiusOverride": {},
+          "InitFov": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -43,22 +48,22 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 12
+                "fixedValue": {
+                  "Value": 12.000000002793968
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400003
+                "fixedValue": {
+                  "Value": 400003.00009313296
                 }
               }
             }
           },
           "IsAim": true,
           "AimIdentifyType": "Manual",
-          "AimTagExtraOffset": 0.3
+          "AimTagExtraOffset": 0.3,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphWaitIdentifyFinish",
@@ -67,15 +72,13 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 12
+                "fixedValue": {
+                  "Value": 12.000000002793968
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400003
+                "fixedValue": {
+                  "Value": 400003.00009313296
                 }
               }
             }
@@ -85,9 +88,12 @@
               "$type": "RPG.GameCore.TriggerCustomString",
               "CustomString": {
                 "Value": "PhotoGraphFinish_201141212"
-              }
+              },
+              "TaskEnabled": true
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.PhotoGraphAimTarget",
@@ -96,21 +102,21 @@
             "FetchType": "SingleNpcByNpcID",
             "SingleNpcID": {
               "GroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 12
+                "fixedValue": {
+                  "Value": 12.000000002793968
                 }
               },
               "GroupNpcID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 400003
+                "fixedValue": {
+                  "Value": 400003.00009313296
                 }
               }
             }
           },
           "AimIdentifyType": "Manual",
-          "AimTagExtraOffset": 0.3
+          "AimTagExtraOffset": 0.3,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -121,11 +127,14 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "PhotoGraphFinish_201141212"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_201141212"
+          "Key": "Mission_201141212",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }

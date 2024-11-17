@@ -8,17 +8,22 @@
           "TaskIDList": [
             201090401
           ],
-          "PerformanceIDList": []
+          "PerformanceIDList": [],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         },
         {
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "Talk_201070806"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.FinishPerformanceMission",
-          "Key": "Mission_201070901"
+          "Key": "Mission_201070901",
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -29,12 +34,16 @@
           "Predicate": {
             "$type": "RPG.GameCore.ByCompareSubMissionState",
             "SubMissionID": 201090401,
-            "SubMissionState": "Finish"
+            "SubMissionState": "Finish",
+            "TaskEnabled": true,
+            "IsClientOnly": true
           },
           "SuccessTaskList": [
             {
               "$type": "RPG.GameCore.FinishPerformanceMission",
-              "Key": "Mission_201070901"
+              "Key": "Mission_201070901",
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
           ],
           "FailedTaskList": [
@@ -45,31 +54,19 @@
                 "FetchType": "SinglePropByPropID",
                 "SinglePropID": {
                   "GroupID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 6
+                    "fixedValue": {
+                      "Value": 6.000000001396984
                     }
                   },
                   "ID": {
-                    "IsDynamic": false,
-                    "FixedValue": {
-                      "Value": 300001
+                    "fixedValue": {
+                      "Value": 300001.0000698494
                     }
                   }
                 }
               },
-              "TargetGroupID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
-              "TargetID": {
-                "IsDynamic": false,
-                "FixedValue": {
-                  "Value": 0
-                }
-              },
+              "TargetGroupID": {},
+              "TargetID": {},
               "TargetTypes": [],
               "DestroyAfterTriggered": true,
               "OnTriggerEnter": [
@@ -77,14 +74,21 @@
                   "$type": "RPG.GameCore.PlayMissionTalk",
                   "SimpleTalkList": [
                     {
+                      "TextSpeed": 20,
                       "TalkSentenceID": 101026701,
                       "ProtectTime": 2
                     }
-                  ]
+                  ],
+                  "TaskEnabled": true,
+                  "IsClientOnly": true
                 }
-              ]
+              ],
+              "SkipFakeAvatar": true,
+              "TaskEnabled": true,
+              "IsClientOnly": true
             }
-          ]
+          ],
+          "TaskEnabled": true
         }
       ]
     }

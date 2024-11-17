@@ -5,12 +5,16 @@
       "TaskList": [
         {
           "$type": "RPG.GameCore.ShowFuncBtn",
+          "Show": true,
+          "HideWhenGraphFinish": true,
           "PuzzleFunc": "Identify",
-          "CDDuration": 0,
+          "ShowBtnFucHint": true,
           "CustomString": {
             "Value": "OpenPhotoMode"
           },
-          "ShowBtnEffect": true
+          "ShowBtnEffect": true,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -21,18 +25,22 @@
           "$type": "RPG.GameCore.WaitCustomString",
           "CustomString": {
             "Value": "OpenPhotoMode"
-          }
+          },
+          "TaskEnabled": true
         },
         {
           "$type": "RPG.GameCore.SwitchPhotoGraphMode",
           "PhotoGraphMode": "Identify",
+          "ExitWhenPreViewDialogFinish": true,
           "SkipPhotoPreviewDialog": true,
           "IdentifyRadiusOverride": {
-            "IsDynamic": false,
-            "FixedValue": {
-              "Value": 5
+            "fixedValue": {
+              "Value": 5.000000001164153
             }
-          }
+          },
+          "InitFov": -1,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -42,10 +50,13 @@
           "$type": "RPG.GameCore.PlayMissionTalk",
           "SimpleTalkList": [
             {
+              "TextSpeed": 20,
               "TalkSentenceID": 200080918,
               "ProtectTime": 2
             }
-          ]
+          ],
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     },
@@ -61,9 +72,13 @@
               "TalkSentenceID": 200085101
             }
           ],
+          "BubbleTalkType": "Normal",
           "IsLoop": true,
           "LoopInterval": 10,
-          "UniqueID": 2211
+          "InstantFinish": true,
+          "UniqueID": 2211,
+          "TaskEnabled": true,
+          "IsClientOnly": true
         }
       ]
     }
